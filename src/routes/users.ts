@@ -18,7 +18,7 @@ const createToken = (id) => {
 router.post("/", async (req: any, res: any) => {
   try {
     const email = req.body.email;
-    console.log(email);
+
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const check = re.test(email);
     if (check === false) {
@@ -34,7 +34,9 @@ router.post("/", async (req: any, res: any) => {
     });
 
     const user = await newUser.save();
-    res.status(201).json({ user: user._id });
+
+    const { name, _id } = user;
+    res.status(201).json({ user: { name, _id } });
   } catch (err) {
     let errors = "";
     if (err.code === 11000) {
@@ -53,6 +55,7 @@ router.post("/", async (req: any, res: any) => {
 
 router.post("/login", async (req: any, res: any) => {
   const { email, password } = req.body;
+
   try {
     const userLogin: IUser = await Users.findOne({ email })!;
 
@@ -63,7 +66,8 @@ router.post("/login", async (req: any, res: any) => {
         if (auth) {
           const token = createToken(userLogin._id);
           res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-          res.status(200).json({ user: userLogin.name });
+          const { name, _id } = userLogin;
+          res.status(200).json({ user: { name, _id } });
         } else {
           throw Error("mot de passe incorrect");
         }
@@ -76,6 +80,7 @@ router.post("/login", async (req: any, res: any) => {
     }
   } catch (err) {
     const errors = err.message;
+
     res.status(400).json({ errors });
   }
 });
@@ -91,7 +96,13 @@ router.post("/check", async (req: any, res: any, next: any) => {
         console.log("wrong token");
       } else {
         let user = await Users.findById(decodedToken.id);
-        res.status(200).send({ user: user.name });
+
+        const data = {
+          name: user.name,
+          _id: user._id,
+        };
+
+        res.status(200).send({ data });
       }
     });
   } else {

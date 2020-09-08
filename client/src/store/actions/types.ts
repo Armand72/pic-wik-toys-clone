@@ -8,6 +8,7 @@ export const CLOSE_MODAL = "CLOSE_MODAL";
 export const SET_POPUP = "SET_POPUP";
 export const CLOSE_POPUP = "CLOSE_POPUP";
 export const SET_AUTH = "SET_AUTH";
+export const SET_CART = "SET_CART ";
 
 export interface SetPopup {
   type: any;
@@ -20,10 +21,21 @@ export interface SetPopup {
   };
 }
 
+export interface SetCart {
+  type: any;
+  payload: {
+    user: string;
+    productList: string;
+    totalPrice: Number;
+    totalQuantity: Number;
+  };
+}
+
 export interface SetAuth {
   type: any;
   payload: {
     name: string;
+    _id: string;
     authorized: boolean;
   };
 }
@@ -108,3 +120,5 @@ export type loader = SetLoader | CloseLoader;
 export type modal = SetModal | CloseModal;
 
 export type auth = SetAuth | CloseModal;
+
+export type cart = SetCart;

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { getProduct, totalItems } from "../store/actions/products";
 import { setLoader, closeLoader } from "../store/actions/loader";
+import { modifyCart, addCart, addCartVisitor } from "../store/actions/cart";
 import { useSelector } from "react-redux";
 import AddBasket from "../assets/img/addBasket";
 import Check from "../assets/img/check";
@@ -19,6 +20,11 @@ const ProductPresentation: FunctionComponent = (props: any) => {
   const productList = (state: any) => state.products.product;
   let product = useSelector(productList);
   product = product[0];
+  const fetchAuth = (state: any) => state.auth.user;
+  let auth = useSelector(fetchAuth);
+
+  const fetchCart = (state: any) => state.cart;
+  let cart = useSelector(fetchCart);
 
   const editQuantity = (e: any) => {
     e.preventDefault();
@@ -82,8 +88,20 @@ const ProductPresentation: FunctionComponent = (props: any) => {
       totalItems(totalQuantity);
     }
 
-    const basket = { user: "", productList, totalPrice, totalQuantity };
-    localStorage.setItem("cart", JSON.stringify(basket));
+    const basket = { user: auth._id, productList, totalPrice, totalQuantity };
+
+    // user and already have a cart
+
+    if (auth.authorized && cart.totalQuantity > 0) {
+      modifyCart(basket);
+      localStorage.setItem("cart", JSON.stringify(basket));
+    } else if (auth.authorized && cart.totalQuantity === 0) {
+      addCart(basket);
+      localStorage.setItem("cart", JSON.stringify(basket));
+    } else {
+      localStorage.setItem("cart", JSON.stringify(basket));
+      addCartVisitor(basket);
+    }
 
     let priceAdded = quantity * product.price;
     priceAdded = Math.round(priceAdded * 100) / 100;
@@ -95,7 +113,6 @@ const ProductPresentation: FunctionComponent = (props: any) => {
       totalAmount = totalPrice;
     } else {
       fee = "60€";
-
       totalAmount = totalPrice + 60;
       parseInt(totalAmount.toFixed(2));
     }

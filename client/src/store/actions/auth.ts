@@ -10,10 +10,12 @@ export const registrationUser = async (data: any) => {
     const response = await API.post("users", data);
 
     if (response.status === 200) {
-      const name = response.data.user;
+      const name = response.data.user.name;
+      const _id = response.data.user._id;
 
       const payload = {
         name,
+        _id,
         authorized: true,
       };
       store.dispatch({
@@ -40,14 +42,16 @@ export const registrationUser = async (data: any) => {
 export const loginUser = async (data: any) => {
   try {
     const response = await API.post("users/login", data);
-    console.log(response.data.user);
     if (response.status === 200) {
-      const name = response.data.user;
+      const name = response.data.user.name;
+      const _id = response.data.user._id;
 
       const payload = {
         name,
+        _id,
         authorized: true,
       };
+
       store.dispatch({
         type: SET_AUTH,
         payload,
@@ -73,10 +77,12 @@ export const checkUser = async () => {
   try {
     const response = await API.post("users/check");
     if (response.status === 200) {
-      const name = response.data.user;
+      const name = response.data.data.name;
+      const _id = response.data.data._id;
 
       const payload = {
         name,
+        _id,
         authorized: true,
       };
       store.dispatch({
@@ -89,6 +95,7 @@ export const checkUser = async () => {
     console.log(err.response);
     const payload = {
       name: "",
+      _id: "",
       authorized: false,
     };
     store.dispatch({
@@ -99,12 +106,12 @@ export const checkUser = async () => {
 };
 
 export const disconnectUser = async () => {
-  console.log("here");
   try {
     await API.post("users/disconnect");
 
     const payload = {
       name: "",
+      _id: "",
       authorized: false,
     };
     store.dispatch({
@@ -115,6 +122,5 @@ export const disconnectUser = async () => {
     closeModal();
   } catch (err) {
     console.log(err.response);
-    console.log("errreeeeeeeeeeur");
   }
 };

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react";
 
 const Popup: FunctionComponent = (props: any) => {
-  console.log(props);
   return (
     <>
       <div className={`popup ${props.class}`}>

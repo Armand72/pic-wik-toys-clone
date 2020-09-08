@@ -2,25 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const Basket = () => {
-  const [length, setLength] = useState(0);
-  const fetch = (state) => state.products.totalQuantity;
+  const fetch = (state) => state.cart.totalQuantity;
   const totalQuantity = useSelector(fetch);
-
-  let currentBasket = JSON.parse(localStorage.getItem("cart") || "{}");
-
-  useEffect(() => {
-    let length = 0;
-    if (Object.keys(currentBasket).length) {
-      length = currentBasket.totalQuantity;
-    }
-    setLength(length);
-  }, []);
-
-  useEffect(() => {
-    if (totalQuantity) {
-      setLength(totalQuantity);
-    }
-  }, [totalQuantity]);
 
   return (
     <div style={{ position: "relative" }}>
@@ -47,7 +30,7 @@ const Basket = () => {
             fill-rule="evenodd"
           ></path>
         </svg>
-        <span class="logo--number">{length}</span>
+        <span class="logo--number">{totalQuantity}</span>
       </span>
     </div>
   );

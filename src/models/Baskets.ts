@@ -11,12 +11,16 @@ const BasketsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
-  products: {
+  productList: {
     type: Array,
     required: true,
   },
   totalPrice: {
-    type: String,
+    type: Number,
+    required: true,
+  },
+  totalQuantity: {
+    type: Number,
     required: true,
   },
 });

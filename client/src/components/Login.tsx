@@ -33,7 +33,7 @@ const variants = {
 const Login: FunctionComponent = (props: any) => {
   const fetchAuth = (state: any) => state.auth.user;
   let auth = useSelector(fetchAuth);
-  console.log(auth);
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -117,14 +117,12 @@ const Login: FunctionComponent = (props: any) => {
 
   const disconnect = (e: any) => {
     e.preventDefault();
-    console.log("here");
     disconnectUser();
   };
 
   useEffect(() => {
     if (auth.authorized) {
       setVisible(false);
-      console.log(visible);
     }
   }, [auth]);
   return (

@@ -11,7 +11,6 @@ const requireAuth = (req: any, res: any, next: any) => {
         const errors = "Veuillez vous reconnectez";
         res.status(401).send({ errors });
       } else {
-        console.log(decodedToken);
         next();
       }
     });

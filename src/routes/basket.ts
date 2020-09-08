@@ -27,11 +27,12 @@ router.post("/", async (req: any, res: any) => {
 router.put("/:id", async (req: any, res: any) => {
   try {
     const basket: IBasket = req.body;
-    const _id: string = req.params.id;
+    const user: string = req.params.id;
     const updatedProduct: IBasket = await Basket.findOneAndUpdate(
-      { _id },
+      { user },
       basket
     );
+
     await updatedProduct.save();
     res.json(updatedProduct);
   } catch (err) {

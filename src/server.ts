@@ -24,8 +24,6 @@ app.use(
   })
 );
 
-console.log(process.env);
-
 app.use("/api", api);
 
 const server = require("http").createServer(app);

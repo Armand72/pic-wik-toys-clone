@@ -4,6 +4,7 @@ import loader from "./loaderReducer";
 import modal from "./modalReducer";
 import popup from "./popupReducer";
 import auth from "./authReducer";
+import cart from "./cartReducer";
 
 export default combineReducers({
   products,
@@ -11,4 +12,5 @@ export default combineReducers({
   modal,
   popup,
   auth,
+  cart,
 });

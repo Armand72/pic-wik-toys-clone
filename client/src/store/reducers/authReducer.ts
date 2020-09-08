@@ -4,16 +4,16 @@ const initialState = {
   user: {
     authorized: false,
     name: "",
+    _id: "",
   },
 };
 
 export default function (state = initialState, action: auth) {
   const { type, payload } = action;
-
   switch (type) {
     case SET_AUTH:
       const user: any = payload;
-      console.log(user, "user");
+
       return {
         ...state,
         user: { ...state.user, ...user },
