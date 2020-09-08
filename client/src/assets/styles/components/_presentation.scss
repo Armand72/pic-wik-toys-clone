@@ -1,0 +1,215 @@
+.presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.2rem;
+  margin: 2rem 0.5rem;
+
+  &__picture-girl {
+    position: relative;
+    width: 100px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -1rem;
+      left: -5rem;
+      z-index: 1;
+      width: 8.5rem;
+      height: 8.5rem;
+      background: url(/images/fille.png) 50% no-repeat;
+    }
+
+    & > img {
+      width: 100%;
+      clip-path: circle(50px);
+    }
+  }
+
+  &__title {
+    font-family: $picwik;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    & > :nth-child(1) {
+      color: $primary-color;
+    }
+
+    & > :nth-child(2) {
+      color: $secondary-color;
+      padding-left: 0.5em;
+    }
+  }
+
+  &__subtitle {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+  }
+
+  &__paragraph {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  &__info {
+    padding: 20px 0;
+
+    & > * {
+      padding: 5px 0;
+    }
+
+    & > div {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__brand {
+    color: $cart-color;
+  }
+  &__name {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  &__min {
+    color: $cart-color;
+    font-size: 1rem;
+  }
+
+  &__description {
+    font-size: 1rem;
+  }
+
+  &__highlight {
+    font-weight: bold;
+    padding: 0 3px;
+  }
+
+  &__price-info {
+    display: flex;
+    padding-bottom: 20px;
+  }
+
+  &__quantity {
+    width: 40%;
+
+    & > p {
+      text-align: center;
+      padding-bottom: 5px;
+    }
+  }
+
+  &__button-quantity {
+    display: flex;
+    height: 3rem;
+
+    &__minus {
+      border-radius: 2.5rem 0 0 2.5rem;
+      border: 1px solid $cart-color;
+      border-right: none;
+      background: white;
+      width: 33%;
+      outline: none;
+      font-size: 1.5rem;
+
+      &--disabled {
+        color: $navigation;
+      }
+    }
+
+    &__number {
+      text-align: center;
+      border: 1px solid $cart-color;
+      border-right: none;
+      border-left: none;
+      background: white;
+      width: 33%;
+      line-height: 3rem;
+      font-size: 1rem;
+    }
+
+    &__plus {
+      border-radius: 0 2.5rem 2.5rem 0;
+      border: 1px solid $cart-color;
+      border-left: none;
+      background: white;
+      width: 33%;
+      outline: none;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__price {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 5px;
+
+    &__number {
+      color: $primary-color;
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    &__eco {
+      font-size: 0.6rem;
+      color: $cart-color;
+    }
+  }
+}
+
+.slider-product {
+  display: flex;
+  overflow-x: auto;
+  margin: 2rem 0.5rem;
+}
+
+.card {
+  min-width: 180px;
+  margin: 0 0.5rem;
+
+  &__image {
+    display: flex;
+    border: 0.3rem solid #ededed;
+    height: 12rem;
+
+    & > img {
+      width: 80%;
+      height: auto;
+      margin: auto;
+    }
+  }
+
+  &__brand {
+    color: $cart-color;
+    font-size: 0.6rem;
+    padding: 0.5em 0;
+  }
+  &__name {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__age {
+    color: $primary-color;
+    font-size: 0.6rem;
+  }
+  &__price {
+    color: $primary-color;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.5em 0;
+  }
+}

@@ -1,0 +1,23 @@
+.popup {
+  width: 80%;
+  height: 3rem;
+  position: fixed;
+  bottom: 0;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &--error {
+    background-color: $error;
+  }
+  &--info {
+    background-color: $info;
+  }
+}

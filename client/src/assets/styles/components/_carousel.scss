@@ -1,0 +1,34 @@
+.carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 560px;
+  & > img {
+    position: absolute;
+    max-width: 100vw;
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: auto;
+
+  &__item {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background-color: $navigation;
+    margin: 0 0.2em;
+    cursor: pointer;
+    border: 0.2rem solid transparent;
+    outline: none;
+
+    &--highlight {
+      background-color: $secondary-color;
+    }
+  }
+}

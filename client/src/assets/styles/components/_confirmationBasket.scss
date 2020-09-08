@@ -1,0 +1,144 @@
+.confirmationBasket {
+  padding: 20px;
+
+  &__added {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+  }
+
+  &__product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $cart-color;
+
+    &__container {
+      display: flex;
+      align-items: center;
+      width: 80%;
+    }
+
+    &___image {
+      width: 75px;
+      height: 75px;
+
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__price {
+      color: $primary-color;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+
+  &__price {
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+
+      & > :nth-child(1) {
+        width: 80%;
+      }
+      & > :nth-child(2) {
+        width: 20%;
+      }
+    }
+  }
+}
+.text {
+  &--small {
+    font-size: 0.8rem;
+    color: $cart-color;
+  }
+
+  &--blue {
+    color: $primary-color;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  &--small-blue {
+    color: $primary-color;
+    font-size: 0.8rem;
+  }
+  &--weight {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+.border {
+  border-bottom: 0.1rem solid $cart-color;
+}
+
+.button {
+  height: 3rem;
+  font-size: 1.2rem;
+  width: 100%;
+  outline: none;
+  font-weight: bold;
+  background: transparent;
+  margin: 2% 0;
+
+  margin: auto;
+
+  &--small {
+    width: 200px;
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: none;
+    color: white;
+
+    :before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 2.5rem;
+      width: 100%;
+      height: 100%;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      background-color: $primary-color;
+      z-index: -1;
+    }
+    :after {
+      content: "";
+      position: absolute;
+      top: 0.4rem;
+      left: 0.6rem;
+      border-radius: 2.5rem;
+      width: 100%;
+      height: 100%;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      background-color: #ffd400;
+      z-index: -2;
+    }
+
+    &--red {
+      :before {
+        background-color: $error;
+      }
+    }
+  }
+
+  &__secondary {
+    border: 2px solid $primary-color;
+    border-radius: 2.5rem;
+    background-color: white;
+    color: $primary-color;
+    text-decoration: underline;
+  }
+}

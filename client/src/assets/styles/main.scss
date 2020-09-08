@@ -1,0 +1,48 @@
+/*
+* Utils section : colors
+*
+**/
+
+@import "./utils/_breakpoint";
+@import "./utils/_colors";
+@import "./utils/_font";
+
+/*
+* base section : reset, global
+*
+**/
+
+@import "./base/_reset";
+
+/*
+* components section 
+*
+**/
+
+@import "./components/_navbar";
+@import "./components/_carousel";
+@import "./components/_catchphrase";
+@import "./components/_deliveryCarousel";
+@import "./components/_presentation";
+@import "./components/_newsletter";
+@import "./components/_footer";
+@import "./components/_loader";
+@import "./components/_modal";
+@import "./components/_confirmationBasket";
+@import "./components/_login";
+@import "./components/_popup";
+
+/*
+* layout section 
+*
+**/
+
+@import "./layout/_setpadding";
+
+/*
+* page section
+
+*
+**/
+
+// @import "./page/_homepage";
