@@ -6,6 +6,7 @@
 @import "./utils/_breakpoint";
 @import "./utils/_colors";
 @import "./utils/_font";
+@import "./utils/_rules";
 
 /*
 * base section : reset, global
@@ -31,6 +32,7 @@
 @import "./components/_confirmationBasket";
 @import "./components/_login";
 @import "./components/_popup";
+@import "./components/_cart";
 
 /*
 * layout section 

@@ -1,13 +1,16 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { getProduct, totalItems } from "../store/actions/products";
+import { Link } from "react-router-dom";
+import { getProduct } from "../store/actions/products";
 import { setLoader, closeLoader } from "../store/actions/loader";
 import { modifyCart, addCart, addCartVisitor } from "../store/actions/cart";
 import { useSelector } from "react-redux";
 import AddBasket from "../assets/img/addBasket";
 import Check from "../assets/img/check";
 import Confirmation from "../assets/img/confirmation";
+import ScrollTop from "../utils/ScrollTop";
 
 const ProductPresentation: FunctionComponent = (props: any) => {
+  ScrollTop();
   const [quantity, setQuantity] = useState(1);
   const [visible, setVisible] = useState(false);
   const [[priceAdded, totalPrice, fee, totalAmount], setOrder] = useState([
@@ -63,7 +66,7 @@ const ProductPresentation: FunctionComponent = (props: any) => {
         let oldQuantity = productList[index].quantity;
         let newQuantity = oldQuantity + quantity;
         totalQuantity = currentBasket.totalQuantity + quantity;
-        totalItems(totalQuantity);
+
         productList[index].quantity = newQuantity;
         totalPrice = quantity * product.price + currentBasket.totalPrice;
         totalPrice = Math.round(totalPrice * 100) / 100;
@@ -76,8 +79,6 @@ const ProductPresentation: FunctionComponent = (props: any) => {
         totalPrice = quantity * product.price + currentBasket.totalPrice;
 
         totalPrice = Math.round(totalPrice * 100) / 100;
-
-        totalItems(totalQuantity);
       }
     } else {
       totalPrice = quantity * product.price + currentPrice;
@@ -85,22 +86,6 @@ const ProductPresentation: FunctionComponent = (props: any) => {
       product.quantity = quantity;
       productList.push(product);
       totalQuantity = quantity;
-      totalItems(totalQuantity);
-    }
-
-    const basket = { user: auth._id, productList, totalPrice, totalQuantity };
-
-    // user and already have a cart
-
-    if (auth.authorized && cart.totalQuantity > 0) {
-      modifyCart(basket);
-      localStorage.setItem("cart", JSON.stringify(basket));
-    } else if (auth.authorized && cart.totalQuantity === 0) {
-      addCart(basket);
-      localStorage.setItem("cart", JSON.stringify(basket));
-    } else {
-      localStorage.setItem("cart", JSON.stringify(basket));
-      addCartVisitor(basket);
     }
 
     let priceAdded = quantity * product.price;
@@ -120,23 +105,46 @@ const ProductPresentation: FunctionComponent = (props: any) => {
     totalAmount = Math.round(totalAmount * 100) / 100;
     totalPrice = Math.round(totalPrice * 100) / 100;
     setOrder([priceAdded, totalPrice, fee, totalAmount]);
+
+    const basket = {
+      user: auth._id,
+      productList,
+      totalPrice,
+      totalQuantity,
+      totalAmount,
+      fee,
+    };
+
+    // user and already have a cart
+
+    if (auth.authorized && cart.totalQuantity > 0) {
+      modifyCart(basket);
+    } else if (auth.authorized && cart.totalQuantity === 0) {
+      addCart(basket);
+    } else {
+      addCartVisitor(basket);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(basket));
+
     closeLoader();
     setVisible(true);
+    setQuantity(1);
   };
 
   const closeModal = () => {
     setVisible(false);
   };
+  let id = props.match.params.id;
   useEffect(() => {
-    let id = props.match.params.id;
     getProduct(id);
-  }, []);
+  }, [id]);
   return (
     <>
       {product && (
         <div className="presentation">
           <div className="presentation__image">
-            <img src={product.src}></img>
+            <img src={product.src} alt={product.alt}></img>
           </div>
           <div className="presentation__info">
             <p className="presentation__brand">{product.brand}</p>
@@ -270,12 +278,13 @@ const ProductPresentation: FunctionComponent = (props: any) => {
                     <p className="text--weight">{totalAmount}€</p>
                   </div>
                 </div>
-
-                <button className="button button__main">
-                  Voir mon panier
-                  <div></div>
-                </button>
-                <button className="button button__secondary mt">
+                <Link to={`/panier`}>
+                  <button className="button button__main ">
+                    Voir mon panier
+                    <div></div>
+                  </button>
+                </Link>
+                <button className="button button__secondary  mt">
                   Continuer mes achats
                   <div></div>
                 </button>

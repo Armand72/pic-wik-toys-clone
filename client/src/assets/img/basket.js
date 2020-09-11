@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 const Basket = () => {
@@ -30,7 +30,7 @@ const Basket = () => {
             fill-rule="evenodd"
           ></path>
         </svg>
-        <span class="logo--number">{totalQuantity}</span>
+        <span className="logo--number">{totalQuantity}</span>
       </span>
     </div>
   );

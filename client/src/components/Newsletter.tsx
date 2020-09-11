@@ -1,6 +1,11 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 
 const Newsletter: FunctionComponent = () => {
+  const [visible, setVisible] = useState(true);
+
+  const switchVisible = () => {
+    setVisible(false);
+  };
   return (
     <>
       <div className="newsletter">
@@ -11,8 +16,10 @@ const Newsletter: FunctionComponent = () => {
           <div className="newsletter__icon">
             <p>{">"}</p>
           </div>
-          <label className="newsletter__label">Adresse email</label>
-          <input className="newsletter__input" />
+          {visible && (
+            <label className="newsletter__label">Adresse email</label>
+          )}
+          <input className="newsletter__input" onFocus={switchVisible} />
         </div>
       </div>
     </>

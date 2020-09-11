@@ -161,8 +161,13 @@ const Login: FunctionComponent = (props: any) => {
                   </div>
 
                   <button
-                    className="button button--small button__main"
+                    className={
+                      Object.values(login).includes("")
+                        ? "button button--small button__main button__main--disabled"
+                        : "button button--small button__main"
+                    }
                     type="submit"
+                    disabled={Object.values(login).includes("") ? true : false}
                   >
                     Se connecter
                     <div></div>
@@ -230,8 +235,13 @@ const Login: FunctionComponent = (props: any) => {
                     />
                   </div>
                   <button
-                    className="button button--small button__main mb"
+                    className={
+                      Object.values(login).includes("")
+                        ? "button button--small button__main button__main--disabled"
+                        : "button button--small button__main"
+                    }
                     type="submit"
+                    disabled={Object.values(login).includes("") ? true : false}
                   >
                     Créer un compte
                     <div></div>

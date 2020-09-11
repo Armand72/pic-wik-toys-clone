@@ -5,6 +5,8 @@ const initialState = {
   user: "",
   totalPrice: 0,
   totalQuantity: 0,
+  totalAmount: 0,
+  fee: "",
 };
 
 export default function (state = initialState, action: cart) {

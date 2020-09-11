@@ -4,6 +4,9 @@ export interface IBasket extends mongoose.Document {
   user: string;
   products: [];
   totalPrice: number;
+  totalQuantity: number;
+  totalAmount: number;
+  fee: string;
 }
 
 const BasketsSchema = new mongoose.Schema({
@@ -21,6 +24,14 @@ const BasketsSchema = new mongoose.Schema({
   },
   totalQuantity: {
     type: Number,
+    required: true,
+  },
+  totalAmount: {
+    type: Number,
+    required: true,
+  },
+  fee: {
+    type: String,
     required: true,
   },
 });

@@ -1,4 +1,3 @@
-import API from "../../api/axios";
 import { SET_MODAL, CLOSE_MODAL } from "./types";
 import store from "../store";
 

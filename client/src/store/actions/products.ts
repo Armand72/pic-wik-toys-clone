@@ -33,17 +33,3 @@ export const getProduct = async (id: string) => {
     }
   }
 };
-
-export const totalItems = async (totalQuantity: any) => {
-  try {
-    store.dispatch({
-      type: SET_TOTALQUANTITY,
-      payload: totalQuantity,
-    });
-  } catch (err) {
-    const errors = err.response;
-    if (errors) {
-      console.log(errors);
-    }
-  }
-};

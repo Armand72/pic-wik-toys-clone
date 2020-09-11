@@ -157,6 +157,7 @@
     &__eco {
       font-size: 0.6rem;
       color: $cart-color;
+      text-align: right;
     }
   }
 }
@@ -191,6 +192,7 @@
   &__name {
     font-size: 0.8rem;
     font-weight: bold;
+    color: black;
   }
 
   &__bottom {

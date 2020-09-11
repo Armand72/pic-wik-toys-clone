@@ -1,0 +1,166 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  background-color: $default-color;
+  padding: 20px 10px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    & > h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__recap {
+    position: relative;
+    background-color: #f2f2f2;
+
+    & > h1 {
+      font-size: 1.5rem;
+    }
+
+    &:before {
+      content: "";
+      display: block;
+
+      height: 8rem;
+      background-color: #fff;
+      background-position: center 3.3rem;
+      background-image: url("/images/bonhomme.png");
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.card-cart {
+  position: relative;
+  margin: 1rem 0;
+  padding: 10px;
+  background-color: white;
+
+  &__close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 25px;
+    height: 25px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+
+    &__image {
+      width: 100px;
+      height: 100px;
+      border: 1px solid $default-color;
+
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__title {
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding-left: 0.8rem;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__quantity {
+      width: 150px;
+    }
+
+    &__unitary {
+      font-size: 0.8rem;
+      color: $cart-color;
+    }
+
+    &__totalPrice {
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-align: right;
+    }
+  }
+
+  &__send {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  &__delivery {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: $navigation;
+    height: 3rem;
+    padding: 10px;
+    border: 1px solid $primary-color;
+
+    & > span {
+      position: relative;
+      z-index: 0;
+      border-color: $primary-color;
+      background-color: $primary-color;
+      margin-right: 1rem;
+      border: 1px solid #bebebe;
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+      -webkit-transition: all 0.25s;
+      transition: all 0.25s;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        width: 4px;
+        height: 4px;
+        background-color: #fff;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+    }
+    & > p {
+      color: $cart-color;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__store {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    background-color: $navigation;
+    height: 3rem;
+    padding: 10px;
+    margin-top: 1rem;
+    color: $cart-color;
+    font-size: 0.8rem;
+
+    & > span {
+      position: relative;
+      z-index: 0;
+      background-color: white;
+      margin-right: 1rem;
+      border: 1px solid grey;
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+      -webkit-transition: all 0.25s;
+      transition: all 0.25s;
+    }
+  }
+}

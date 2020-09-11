@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Routes from "./routing/Route";
 import { useSelector } from "react-redux";
 import { checkCart } from "./store/actions/cart";
-import { addCartVisitor } from "./store/actions/cart";
+import { addCartVisitorApp } from "./store/actions/cart";
 
 function App() {
   const fetchAuth = (state: any) => state.auth.user;
@@ -14,7 +14,7 @@ function App() {
     checkCart(auth._id);
   } else {
     const basket = JSON.parse(localStorage.getItem("cart") || "{}");
-    addCartVisitor(basket);
+    addCartVisitorApp(basket);
   }
 
   return (

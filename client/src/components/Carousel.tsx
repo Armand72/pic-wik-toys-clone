@@ -91,6 +91,7 @@ const Carousel: FunctionComponent = () => {
       <div className="navigation">
         {images.map((props, index) => (
           <button
+            key={index}
             className={
               index === page
                 ? "navigation__item navigation__item--highlight"

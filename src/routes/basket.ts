@@ -33,6 +33,8 @@ router.put("/:id", async (req: any, res: any) => {
       basket
     );
 
+    console.log(user, basket);
+
     await updatedProduct.save();
     res.json(updatedProduct);
   } catch (err) {
@@ -42,8 +44,8 @@ router.put("/:id", async (req: any, res: any) => {
 
 router.delete("/:id", async (req: any, res: any) => {
   try {
-    const _id: string = req.params.id;
-    const product: IBasket = await Basket.findById(_id);
+    const user: string = req.params.id;
+    const product: IBasket = await Basket.findOneAndDelete({ user });
     await product.remove();
     res.json(product);
   } catch (err) {

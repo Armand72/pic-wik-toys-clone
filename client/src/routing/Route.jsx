@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import ProductPresentation from "../pages/ProductPresentation";
 import Loader from "../components/Loader";
 import { useSelector } from "react-redux";
-import MyBasket from "../pages/MyBasket";
+import MyCart from "../pages/MyCart";
 import Login from "../components/Login";
 import Popup from "../components/Popup";
 
@@ -25,9 +25,10 @@ const Routes = () => {
       {modal && <Login />}
       <div className="padding-navbar">
         <Switch>
-          <Route exact path="/" component={Homepage}></Route>
+          <Route exact path="/panier" component={MyCart}></Route>
+
           <Route exact path="/:id" component={ProductPresentation}></Route>
-          <Route exact path="/panier" component={MyBasket}></Route>
+          <Route exact path="/" component={Homepage}></Route>
 
           {/* <PrivateRoute
           exact

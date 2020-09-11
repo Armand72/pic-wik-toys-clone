@@ -5,6 +5,21 @@ import Send from "../assets/img/send";
 
 const itemList = ["secure", "send", "delivery"];
 
+const variants = {
+  enter: {
+    x: 50,
+    opacity: 0,
+  },
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: {
+    x: -50,
+    opacity: 0,
+  },
+};
+
 const DeliveryCarousel: FunctionComponent = () => {
   const [item, setItem] = useState<string>("secure");
   const [[count, maxcount], setCount] = useState<number[]>([

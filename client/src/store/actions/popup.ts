@@ -1,4 +1,3 @@
-import API from "../../api/axios";
 import { SET_POPUP, CLOSE_POPUP } from "./types";
 import store from "../store";
 

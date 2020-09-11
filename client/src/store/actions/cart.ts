@@ -1,14 +1,29 @@
 import API from "../../api/axios";
 import { SET_CART, GET_PRODUCT, SET_TOTALQUANTITY, Product } from "./types";
 import store from "../store";
+import { setPopup } from "./popup";
 
 export const checkCart = async (id: string) => {
   try {
     const response = await API.get(`baskets/${id}`);
 
     if (response.status === 200) {
-      const { user, productList, totalPrice, totalQuantity } = response.data[0];
-      const basket = { user, productList, totalPrice, totalQuantity };
+      const {
+        user,
+        productList,
+        totalPrice,
+        totalQuantity,
+        fee,
+        totalAmount,
+      } = response.data[0];
+      const basket = {
+        user,
+        productList,
+        totalPrice,
+        totalQuantity,
+        fee,
+        totalAmount,
+      };
       localStorage.setItem("cart", JSON.stringify(basket));
 
       store.dispatch({
@@ -16,7 +31,7 @@ export const checkCart = async (id: string) => {
         payload: { ...basket },
       });
     } else {
-      // DAns le cas où il n'y a pas de cart attitré à l'utilisateur connecté mais qu'il existe dans le localStorage
+      //  S'il y a un panier dans le localstorage alors il devient celui de l'utilsateur
       const basket = JSON.parse(localStorage.getItem("cart") || "{}");
       await API.get(`baskets`, basket);
     }
@@ -28,6 +43,7 @@ export const checkCart = async (id: string) => {
   }
 };
 
+// add items for the first time for a user
 export const addCart = async (basket: object) => {
   try {
     const response = await API.post(`baskets`, basket);
@@ -36,6 +52,11 @@ export const addCart = async (basket: object) => {
       store.dispatch({
         type: SET_CART,
         payload: { ...basket },
+      });
+      setPopup({
+        message: "Panier actualisé",
+        visible: true,
+        class: "popup--info",
       });
     }
   } catch (err) {
@@ -46,7 +67,28 @@ export const addCart = async (basket: object) => {
   }
 };
 
+// add items if there are no users
 export const addCartVisitor = async (basket: object) => {
+  try {
+    store.dispatch({
+      type: SET_CART,
+      payload: { ...basket },
+    });
+    setPopup({
+      message: "Panier actualisé",
+      visible: true,
+      class: "popup--info",
+    });
+  } catch (err) {
+    const errors = err.response;
+    if (errors) {
+      console.log(errors);
+    }
+  }
+};
+
+// add items if there are no users
+export const addCartVisitorApp = async (basket: object) => {
   try {
     store.dispatch({
       type: SET_CART,
@@ -60,6 +102,7 @@ export const addCartVisitor = async (basket: object) => {
   }
 };
 
+// modify cart of an existing cart for a user
 export const modifyCart = async (basket: any) => {
   try {
     const response = await API.put(`baskets/${basket.user}`, basket);
@@ -67,6 +110,11 @@ export const modifyCart = async (basket: any) => {
       store.dispatch({
         type: SET_CART,
         payload: { ...basket },
+      });
+      setPopup({
+        message: "Panier actualisé",
+        visible: true,
+        class: "popup--info",
       });
     }
   } catch (err) {
@@ -77,17 +125,97 @@ export const modifyCart = async (basket: any) => {
   }
 };
 
-//   export const deleteCart = async (basket: object) => {
-//     try {
-//       const response = await API.get(`baskets`, basket);
+export const deleteCart = async (id: string) => {
+  try {
+    const response = await API.delete(`baskets/${id}`);
 
-//       if (response.status === 200) {
-//       }
+    if (response.status === 200) {
+      const basket = {
+        user: id,
+        productList: [],
+        totalPrice: 0,
+        totalQuantity: 0,
+        fee: "",
+        totalAmount: 0,
+      };
 
-//     } catch (err) {
-//       const errors = err.response;
-//       if (errors) {
-//         console.log(errors);
-//       }
-//     }
-//   };
+      store.dispatch({
+        type: SET_CART,
+        payload: { ...basket },
+      });
+
+      localStorage.removeItem("cart");
+
+      setPopup({
+        message: "Merci pour votre commande",
+        visible: true,
+        class: "popup--info",
+      });
+    }
+  } catch (err) {
+    const errors = err.response;
+    if (errors) {
+      console.log(errors);
+    }
+  }
+};
+
+export const resetCart = async (id: string) => {
+  try {
+    const response = await API.delete(`baskets/${id}`);
+
+    if (response.status === 200) {
+      const basket = {
+        user: id,
+        productList: [],
+        totalPrice: 0,
+        totalQuantity: 0,
+        fee: "",
+        totalAmount: 0,
+      };
+
+      store.dispatch({
+        type: SET_CART,
+        payload: { ...basket },
+      });
+
+      localStorage.removeItem("cart");
+
+      setPopup({
+        message: "Panier actualisé",
+        visible: true,
+        class: "popup--info",
+      });
+    }
+  } catch (err) {
+    const errors = err.response;
+    if (errors) {
+      console.log(errors);
+    }
+  }
+};
+
+export const deleteCartVisitor = async () => {
+  try {
+    const basket = {
+      user: "",
+      productList: [],
+      totalPrice: 0,
+      totalQuantity: 0,
+      fee: "",
+      totalAmount: 0,
+    };
+
+    store.dispatch({
+      type: SET_CART,
+      payload: { ...basket },
+    });
+
+    localStorage.removeItem("cart");
+  } catch (err) {
+    const errors = err.response;
+    if (errors) {
+      console.log(errors);
+    }
+  }
+};

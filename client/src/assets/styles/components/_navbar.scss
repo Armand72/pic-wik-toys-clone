@@ -57,8 +57,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 0.8rem;
+  position: relative;
   &:hover {
     border: 3px solid $primary-color;
+  }
+
+  &__typing {
+    width: auto;
+    text-align: center;
+    position: absolute;
+    left: 15%;
   }
 
   &__icon {
@@ -68,9 +77,8 @@
 
   &__input {
     width: 80%;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     border: none;
-    font-weight: 600;
     background: none;
     outline: none;
   }
