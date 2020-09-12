@@ -1,10 +1,10 @@
 {
   "name": "template-react-typescript-mongodb",
   "version": "1.0.0",
-  "main": "src/server.ts",
+  "main": "server.ts",
   "scripts": {
     "test": "jest",
-    "server": "nodemon src/server.ts",
+    "server": "nodemon server.ts",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install && npm run build"

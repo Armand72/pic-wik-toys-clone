@@ -6,8 +6,8 @@ const app = express();
 const cors = require("cors");
 var path = require("path");
 
-const api = require("./routes");
-const connectDB = require("./config/config.ts");
+const api = require("./src/routes");
+const connectDB = require("./src/config/config");
 
 require("dotenv").config();
 
@@ -41,9 +41,11 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
+console.log(__dirname);
+
 const port = process.env.PORT || SERVER_ADDRESS;
 const server = require("http").createServer(app);
-server.listen(port, () => {
+server.listen(parseInt(port), () => {
   console.log(`server is listening on port ${port}`);
 });
 
