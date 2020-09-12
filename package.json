@@ -7,6 +7,8 @@
     "server": "nodemon server.ts",
     "start": "node server.ts",
     "client": "npm start --prefix client",
+    "build-ts": "tsc",
+    "postinstall": "npm run build-ts",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },

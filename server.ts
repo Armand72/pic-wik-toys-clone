@@ -1,4 +1,3 @@
-export = {};
 const parser = require("body-parser");
 const express = require("express");
 const cookieParser = require("cookie-parser");
