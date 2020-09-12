@@ -20,6 +20,9 @@
   }
 
   &__container {
+    @media (min-width: $screen) {
+      width: 50vw;
+    }
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,6 +43,7 @@
       color: $primary-color;
       font-weight: bold;
       font-size: 1.5rem;
+      cursor: pointer;
     }
 
     &--account {
@@ -62,14 +66,18 @@
     }
 
     &__formPayment {
+      @media (min-width: $screen) {
+        height: auto;
+        padding-bottom: 10px;
+      }
       width: 100%;
-      height: 50vh;
     }
 
     &__link {
       color: $primary-color;
       font-weight: bold;
       font-family: $picwik;
+      font-size: 1.5rem;
     }
   }
 }

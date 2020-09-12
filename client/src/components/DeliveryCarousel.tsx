@@ -2,23 +2,10 @@ import React, { FunctionComponent, useState, useEffect } from "react";
 import Secure from "../assets/img/secure";
 import Delivery from "../assets/img/delivery";
 import Send from "../assets/img/send";
+import Hour from "../assets/img/hour";
+import windowSize from "../utils/WindowSize";
 
-const itemList = ["secure", "send", "delivery"];
-
-const variants = {
-  enter: {
-    x: 50,
-    opacity: 0,
-  },
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: {
-    x: -50,
-    opacity: 0,
-  },
-};
+const itemList = ["secure", "send", "delivery", "hour"];
 
 const DeliveryCarousel: FunctionComponent = () => {
   const [item, setItem] = useState<string>("secure");
@@ -26,6 +13,8 @@ const DeliveryCarousel: FunctionComponent = () => {
     0,
     itemList.length - 1,
   ]);
+
+  const dimension = windowSize();
 
   useEffect(() => {
     let countTimer = count;
@@ -71,6 +60,15 @@ const DeliveryCarousel: FunctionComponent = () => {
             <p>Livraison offerte en magasin</p>
           </>
         );
+      case "hour":
+        return (
+          <>
+            <div className="logo-carousel">
+              <Hour />
+            </div>
+            <p>Livraison offerte en magasin</p>
+          </>
+        );
       default:
         return (
           <>
@@ -85,7 +83,36 @@ const DeliveryCarousel: FunctionComponent = () => {
 
   return (
     <>
-      <div className="delivery-carousel">{carousel()}</div>
+      {dimension.width > 960 ? (
+        <div className="delivery-carousel--desktop">
+          <div>
+            <div className="logo-carousel logo-carousel--desktop">
+              <Secure />
+            </div>
+            <p>Paiement 100% sécurisé</p>
+          </div>
+          <div>
+            <div className="logo-carousel logo-carousel--desktop">
+              <Send />
+            </div>
+            <p>Retour gratuit en magasin</p>
+          </div>
+          <div>
+            <div className="logo-carousel logo-carousel--desktop">
+              <Delivery />
+            </div>
+            <p>Livraison offerte en magasin</p>
+          </div>
+          <div>
+            <div className="logo-carousel logo-carousel--desktop">
+              <Hour />
+            </div>
+            <p>Livraison offerte en magasin</p>
+          </div>
+        </div>
+      ) : (
+        <div className="delivery-carousel">{carousel()}</div>
+      )}
     </>
   );
 };

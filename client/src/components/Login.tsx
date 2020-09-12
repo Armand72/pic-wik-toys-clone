@@ -30,39 +30,53 @@ const variants = {
   },
 };
 
-const Login: FunctionComponent = (props: any) => {
-  const fetchAuth = (state: any) => state.auth.user;
+export interface User {
+  auth: { user: { authorized: boolean; name: string; _id: string } };
+}
+
+export interface Login {
+  email: string;
+  password: string;
+}
+
+export interface Registration {
+  email: string;
+  password: string;
+  checkpassword: string;
+  name: string;
+}
+
+const Login: FunctionComponent = () => {
+  const fetchAuth = (state: User) => state.auth.user;
   let auth = useSelector(fetchAuth);
 
-  const [login, setLogin] = useState({
+  const [login, setLogin] = useState<Login>({
     email: "",
     password: "",
   });
-  const [registration, setRegistration] = useState({
+  const [registration, setRegistration] = useState<Registration>({
     email: "",
     password: "",
     checkpassword: "",
     name: "",
   });
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState<boolean>(true);
 
   const switchForm = () => {
     setVisible(!visible);
   };
-  const getData = (e: any) => {
-    const name = e.target.name;
-    const value = e.target.value;
+  const getData = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { name, value } = e.target as HTMLButtonElement;
 
     setLogin({ ...login, [name]: value });
   };
-  const getDataRegistration = (e: any) => {
-    const name = e.target.name;
-    const value = e.target.value;
+  const getDataRegistration = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { name, value } = e.target as HTMLButtonElement;
 
     setRegistration({ ...registration, [name]: value });
   };
 
-  const sendLogin = (e: any) => {
+  const sendLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (login.password === "" || login.email === "") {
@@ -80,7 +94,7 @@ const Login: FunctionComponent = (props: any) => {
     }
   };
 
-  const sendRegistration = (e: any) => {
+  const sendRegistration = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       registration.password === "" ||
@@ -115,7 +129,7 @@ const Login: FunctionComponent = (props: any) => {
     closeModal();
   };
 
-  const disconnect = (e: any) => {
+  const disconnect = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     disconnectUser();
   };
@@ -236,12 +250,14 @@ const Login: FunctionComponent = (props: any) => {
                   </div>
                   <button
                     className={
-                      Object.values(login).includes("")
+                      Object.values(registration).includes("")
                         ? "button button--small button__main button__main--disabled"
                         : "button button--small button__main"
                     }
                     type="submit"
-                    disabled={Object.values(login).includes("") ? true : false}
+                    disabled={
+                      Object.values(registration).includes("") ? true : false
+                    }
                   >
                     Créer un compte
                     <div></div>

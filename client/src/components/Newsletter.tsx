@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 
 const Newsletter: FunctionComponent = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState<boolean>(true);
 
   const switchVisible = () => {
     setVisible(false);
@@ -19,7 +19,13 @@ const Newsletter: FunctionComponent = () => {
           {visible && (
             <label className="newsletter__label">Adresse email</label>
           )}
-          <input className="newsletter__input" onFocus={switchVisible} />
+          <div className="newsletter__button-container">
+            <input className="newsletter__input" onFocus={switchVisible} />
+            <button className="button button__secondary d-none-maxls button--small ml newsletter__button">
+              M'inscrire
+              <div></div>
+            </button>
+          </div>
         </div>
       </div>
     </>

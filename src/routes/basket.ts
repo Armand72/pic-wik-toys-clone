@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const { Auth } = require("../auth/Auth");
 import Basket, { IBasket } from "../models/Baskets";
 
-router.get("/:id", async (req: any, res: any) => {
+router.get("/:id", Auth, async (req: any, res: any) => {
   try {
     const user: string = req.params.id;
 
@@ -14,7 +15,7 @@ router.get("/:id", async (req: any, res: any) => {
   }
 });
 
-router.post("/", async (req: any, res: any) => {
+router.post("/", Auth, async (req: any, res: any) => {
   try {
     const initializeBasket: IBasket = new Basket(req.body);
     const basket = await initializeBasket.save();
@@ -24,7 +25,7 @@ router.post("/", async (req: any, res: any) => {
   }
 });
 
-router.put("/:id", async (req: any, res: any) => {
+router.put("/:id", Auth, async (req: any, res: any) => {
   try {
     const basket: IBasket = req.body;
     const user: string = req.params.id;
@@ -33,8 +34,6 @@ router.put("/:id", async (req: any, res: any) => {
       basket
     );
 
-    console.log(user, basket);
-
     await updatedProduct.save();
     res.json(updatedProduct);
   } catch (err) {
@@ -42,7 +41,7 @@ router.put("/:id", async (req: any, res: any) => {
   }
 });
 
-router.delete("/:id", async (req: any, res: any) => {
+router.delete("/:id", Auth, async (req: any, res: any) => {
   try {
     const user: string = req.params.id;
     const product: IBasket = await Basket.findOneAndDelete({ user });

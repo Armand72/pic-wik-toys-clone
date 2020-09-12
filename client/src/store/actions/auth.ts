@@ -3,9 +3,9 @@ import API from "../../api/axios";
 import store from "../store";
 import { setPopup } from "./popup";
 import { closeModal } from "./modal";
-import { SET_AUTH } from "./types";
+import { SET_AUTH, SET_CART } from "./types";
 
-export const registrationUser = async (data: any) => {
+export const registrationUser = async (data) => {
   try {
     const response = await API.post("users", data);
 
@@ -27,6 +27,21 @@ export const registrationUser = async (data: any) => {
         visible: true,
         class: "popup--info",
       });
+
+      // if a localstorage exists we link it to the user account
+
+      const basket = JSON.parse(localStorage.getItem("cart") || "{}");
+      basket.user = _id;
+
+      if (Object.keys(basket).length) {
+        store.dispatch({
+          type: SET_CART,
+          payload: { ...basket },
+        });
+
+        await API.post(`baskets`, basket);
+        localStorage.setItem("cart", JSON.stringify(basket));
+      }
     }
     closeModal();
   } catch (err) {
@@ -39,7 +54,7 @@ export const registrationUser = async (data: any) => {
   }
 };
 
-export const loginUser = async (data: any) => {
+export const loginUser = async (data) => {
   try {
     const response = await API.post("users/login", data);
     if (response.status === 200) {
@@ -61,6 +76,20 @@ export const loginUser = async (data: any) => {
         visible: true,
         class: "popup--info",
       });
+
+      // if a localstorage exists we link it to the user account
+      const basket = JSON.parse(localStorage.getItem("cart") || "{}");
+      basket.user = _id;
+
+      if (Object.keys(basket).length) {
+        store.dispatch({
+          type: SET_CART,
+          payload: { ...basket },
+        });
+
+        await API.post(`baskets`, basket);
+        localStorage.setItem("cart", JSON.stringify(basket));
+      }
       closeModal();
     }
   } catch (err) {

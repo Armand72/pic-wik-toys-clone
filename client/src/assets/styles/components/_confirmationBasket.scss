@@ -92,7 +92,7 @@
   font-weight: bold;
   background: transparent;
   margin: 2% 0;
-
+  cursor: pointer;
   margin: auto;
 
   &--small {
@@ -148,10 +148,30 @@
   }
 
   &__secondary {
-    border: 2px solid $primary-color;
+    border: 2px solid $disabled;
+    border-radius: 2.5rem;
+    background-color: white;
+    color: $disabled;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $disabled;
+      color: white;
+    }
+  }
+
+  &__empty {
+    border: 2px solid white;
     border-radius: 2.5rem;
     background-color: white;
     color: $primary-color;
-    text-decoration: underline;
+    text-decoration: none;
+    margin-top: 2rem;
+    width: 300px;
+
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+    }
   }
 }

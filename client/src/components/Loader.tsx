@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Super from "../assets/img/super";
 
-const Loader: FunctionComponent = (props: any) => {
+const Loader: FunctionComponent = () => {
   return (
     <>
       <div className="loader">

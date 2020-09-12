@@ -6,6 +6,14 @@
   align-items: center;
   color: $cart-color;
   margin: 2rem 0;
+
+  &--desktop {
+    display: flex;
+    margin: 2rem;
+    justify-content: space-around;
+    margin-bottom: 5%;
+    align-items: center;
+  }
 }
 
 .logo-carousel {

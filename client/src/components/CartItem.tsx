@@ -1,14 +1,18 @@
 import React, { FunctionComponent, useState } from "react";
 import Cross from "../assets/img/cross";
 
-// export interface Props {
-//   label: string;
-//   name: string;
-//   getData: any;
-//   type?: string;
-// }
+export interface Props {
+  name: string;
+  price: number;
+  alt: string;
+  src: string;
+  quantity: number;
+  updateCart: Function;
+  index: number;
+  deleteItem: Function;
+}
 
-const CartItem: FunctionComponent = (props: any) => {
+const CartItem: FunctionComponent<Props> = (props) => {
   const {
     name,
     price,
@@ -24,9 +28,9 @@ const CartItem: FunctionComponent = (props: any) => {
     return Math.round(price * quantity * 100) / 100;
   };
 
-  const editQuantity = (e: any) => {
+  const editQuantity = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const name = e.target.name;
+    const { name } = e.target as HTMLButtonElement;
 
     let newQuantity = 0;
     let newPrice = 0;
@@ -41,7 +45,7 @@ const CartItem: FunctionComponent = (props: any) => {
       newPrice = -price;
     }
 
-    updateCart(newPrice, newQuantity, index, price);
+    updateCart(newPrice, newQuantity, index);
   };
 
   return (

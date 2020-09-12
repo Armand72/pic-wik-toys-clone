@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/Users");
 
-const requireAuth = (req: any, res: any, next: any) => {
+const Auth = (req: any, res: any, next: any) => {
   const token = req.cookies.jwt;
 
-  // check json web token exists & is verified
   if (token) {
     jwt.verify(token, "my secret", (err, decodedToken) => {
       if (err) {
@@ -15,9 +14,9 @@ const requireAuth = (req: any, res: any, next: any) => {
       }
     });
   } else {
-    const errors = "Veuillez vous reconnectez";
+    const errors = "Unauthorised";
     res.status(401).send({ errors });
   }
 };
 
-module.exports = { requireAuth };
+module.exports = { Auth };

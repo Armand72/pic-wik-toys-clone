@@ -4,8 +4,9 @@ const router = express.Router();
 const stripe = require("stripe")(
   "sk_test_51HPjswGZm9C9etrMsq8gj129iTSIo1EsNTBAA3JuI5s18rPGQabyd6Jmpq9WRo4ra4sOCrPEKKr10efE4Y768ULA00sHmwyZAn"
 );
+const { Auth } = require("../auth/Auth");
 
-router.post("/", async (req: any, res: any) => {
+router.post("/", Auth, async (req: any, res: any) => {
   try {
     const { amount, source, receipt_email } = req.body;
 

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import windowSize from "../utils/WindowSize";
 
 const images = [
   "/images/mobile1.jpg",
@@ -7,8 +8,10 @@ const images = [
   "/images/mobile3.jpg",
 ];
 
+const imageDesktop = ["/images/champion.jpg", "/images/contact.jpg"];
+
 const variants = {
-  enter: (direction: number) => {
+  enter: () => {
     return {
       zIndex: 0,
       opacity: 0,
@@ -36,6 +39,15 @@ const swipePower = (offset: number, velocity: number) => {
 const Carousel: FunctionComponent = () => {
   const [[page, direction], setPage] = useState<number[]>([0, 0]);
 
+  const dimension = windowSize();
+  let buttonCarousel;
+
+  if (dimension.width > 960) {
+    buttonCarousel = imageDesktop;
+  } else {
+    buttonCarousel = images;
+  }
+
   const paginate = (
     newDirection: number,
     e: TouchEvent | React.MouseEvent<HTMLButtonElement> | MouseEvent
@@ -45,9 +57,15 @@ const Carousel: FunctionComponent = () => {
 
     if (newDirection > page) {
       direction = 1;
+      if (page === buttonCarousel.length - 1) {
+        newDirection = 0;
+      }
       setPage([newDirection, direction]);
     } else {
       direction = -1;
+      if (page === 0) {
+        newDirection = buttonCarousel.length - 1;
+      }
       setPage([newDirection, direction]);
     }
   };
@@ -58,7 +76,7 @@ const Carousel: FunctionComponent = () => {
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={page}
-            src={images[page]}
+            src={dimension.width > 960 ? imageDesktop[page] : images[page]}
             custom={direction}
             variants={variants}
             initial="enter"
@@ -89,7 +107,7 @@ const Carousel: FunctionComponent = () => {
         </AnimatePresence>
       </div>
       <div className="navigation">
-        {images.map((props, index) => (
+        {buttonCarousel.map((props, index) => (
           <button
             key={index}
             className={

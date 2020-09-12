@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import MyCart from "../pages/MyCart";
 import Login from "../components/Login";
 import Popup from "../components/Popup";
+import Newsletter from "../components/Newsletter";
 
 const Routes = () => {
   const fetch = (state) => state.loader.visible;
@@ -37,6 +38,7 @@ const Routes = () => {
         ></PrivateRoute> */}
         </Switch>
       </div>
+      <Newsletter />
       <Footer />
 
       {popup.visible && <Popup class={popup.class} message={popup.message} />}

@@ -6,7 +6,7 @@ import { product } from "../assets/types/types";
 import ProductsList from "./ProductsList";
 
 const ToyCarousel: FunctionComponent = () => {
-  const productList = (state: any) => state.products.productList;
+  const productList = (state) => state.products.productList;
   const product = useSelector(productList);
 
   const [toys, setToys] = useState<product[]>([]);

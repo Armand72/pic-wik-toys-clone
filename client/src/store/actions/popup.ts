@@ -2,7 +2,6 @@ import { SET_POPUP, CLOSE_POPUP } from "./types";
 import store from "../store";
 
 export const setPopup = async (data: object) => {
-  console.log(data);
   try {
     store.dispatch({
       type: SET_POPUP,

@@ -1,6 +1,11 @@
 import React, { FunctionComponent } from "react";
 
-const Popup: FunctionComponent = (props: any) => {
+export interface Popup {
+  class: string;
+  message: string;
+}
+
+const Popup: FunctionComponent<Popup> = (props) => {
   return (
     <>
       <div className={`popup ${props.class}`}>

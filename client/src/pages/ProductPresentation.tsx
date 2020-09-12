@@ -9,6 +9,15 @@ import Check from "../assets/img/check";
 import Confirmation from "../assets/img/confirmation";
 import ScrollTop from "../utils/ScrollTop";
 
+export interface Basket {
+  user: string;
+  productList: [];
+  totalPrice: number;
+  totalQuantity: number;
+  fee: string;
+  totalAmount: number;
+}
+
 const ProductPresentation: FunctionComponent = (props: any) => {
   ScrollTop();
   const [quantity, setQuantity] = useState(1);
@@ -20,18 +29,18 @@ const ProductPresentation: FunctionComponent = (props: any) => {
     0,
   ]);
 
-  const productList = (state: any) => state.products.product;
+  const productList = (state) => state.products.product;
   let product = useSelector(productList);
   product = product[0];
-  const fetchAuth = (state: any) => state.auth.user;
+  const fetchAuth = (state) => state.auth.user;
   let auth = useSelector(fetchAuth);
 
-  const fetchCart = (state: any) => state.cart;
+  const fetchCart = (state) => state.cart;
   let cart = useSelector(fetchCart);
 
-  const editQuantity = (e: any) => {
+  const editQuantity = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const name = e.target.name;
+    const { name } = e.target as HTMLButtonElement;
 
     if (name === "plus") {
       setQuantity(quantity + 1);
@@ -106,7 +115,7 @@ const ProductPresentation: FunctionComponent = (props: any) => {
     totalPrice = Math.round(totalPrice * 100) / 100;
     setOrder([priceAdded, totalPrice, fee, totalAmount]);
 
-    const basket = {
+    const basket: Basket = {
       user: auth._id,
       productList,
       totalPrice,
@@ -142,98 +151,106 @@ const ProductPresentation: FunctionComponent = (props: any) => {
   return (
     <>
       {product && (
-        <div className="presentation">
+        <div className="presentation presentation--desktop">
           <div className="presentation__image">
             <img src={product.src} alt={product.alt}></img>
           </div>
-          <div className="presentation__info">
-            <p className="presentation__brand">{product.brand}</p>
-            <h1 className="presentation__name">{product.name}</h1>
-            <p className="presentation__min">{product.ageMin}</p>
-            <p className="presentation__description">{product.description}</p>
-          </div>
 
-          <div className="presentation__info">
-            <div>
-              <Check />
-              <p>
-                +15
-                <span className="presentation__highlight">
-                  points de fidélité
-                </span>
-              </p>
-            </div>
-            <div>
-              <Check />
-              <p>
-                <span className="presentation__highlight">
-                  Retour gratuit en magasin
-                </span>
-                en magasin
-              </p>
-            </div>
-            <div>
-              <Check />
-              <p>
-                Paiement
-                <span className="presentation__highlight">100% sécurise</span>
-              </p>
+          <div className="presentation__desktop">
+            <div className="presentation__info">
+              <p className="presentation__brand">{product.brand}</p>
+              <h1 className="presentation__name">{product.name}</h1>
+              <p className="presentation__min">{product.ageMin}</p>
+              <p className="presentation__description">{product.description}</p>
             </div>
 
-            <div>
-              <Check />
-              <p>
-                <span className="presentation__highlight">
-                  Livraison offerte
-                </span>
-                à partir de 60.00€
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="presentation__price-info">
-              <div className="presentation__quantity">
-                <p>Quantité :</p>
-                <div className="presentation__button-quantity">
-                  <button
-                    className={
-                      quantity === 1
-                        ? "presentation__button-quantity__minus presentation__button-quantity__minus--disabled"
-                        : "presentation__button-quantity__minus"
-                    }
-                    name="minus"
-                    onClick={editQuantity}
-                    disabled={quantity === 1 ? true : false}
-                  >
-                    -
-                  </button>
-                  <input
-                    className="presentation__button-quantity__number"
-                    value={quantity}
-                    readOnly
-                  />
-                  <button
-                    className="presentation__button-quantity__plus"
-                    name="plus"
-                    onClick={editQuantity}
-                  >
-                    +
-                  </button>
-                </div>
+            <div className="presentation__info">
+              <div>
+                <Check />
+                <p>
+                  +15
+                  <span className="presentation__highlight">
+                    points de fidélité
+                  </span>
+                </p>
               </div>
-              <div className="presentation__price">
-                <p className="presentation__price__number">{product.price}€</p>
-                <p className="presentation__price__eco">
-                  Dont 0.07 pour l'éco-participation
+              <div>
+                <Check />
+                <p>
+                  <span className="presentation__highlight">
+                    Retour gratuit en magasin
+                  </span>
+                  en magasin
+                </p>
+              </div>
+              <div>
+                <Check />
+                <p>
+                  Paiement
+                  <span className="presentation__highlight">100% sécurise</span>
+                </p>
+              </div>
+
+              <div>
+                <Check />
+                <p>
+                  <span className="presentation__highlight">
+                    Livraison offerte
+                  </span>
+                  à partir de 60.00€
                 </p>
               </div>
             </div>
-            <button className="button button__main" onClick={AddCart}>
-              Ajout au panier
-              <div className="pl">
-                <AddBasket />
+            <div>
+              <div className="presentation__price-info">
+                <div className="presentation__quantity">
+                  <p>Quantité :</p>
+                  <div className="presentation__button-quantity">
+                    <button
+                      className={
+                        quantity === 1
+                          ? "presentation__button-quantity__minus presentation__button-quantity__minus--disabled"
+                          : "presentation__button-quantity__minus"
+                      }
+                      name="minus"
+                      onClick={editQuantity}
+                      disabled={quantity === 1 ? true : false}
+                    >
+                      -
+                    </button>
+                    <input
+                      className="presentation__button-quantity__number"
+                      value={quantity}
+                      readOnly
+                    />
+                    <button
+                      className="presentation__button-quantity__plus"
+                      name="plus"
+                      onClick={editQuantity}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div className="presentation__price">
+                  <p className="presentation__price__number">
+                    {product.price}€
+                  </p>
+                  <p className="presentation__price__eco">
+                    Dont 0.07 pour l'éco-participation
+                  </p>
+                </div>
               </div>
-            </button>
+              <button
+                className="button button__main presentation__button"
+                onClick={AddCart}
+              >
+                Ajout au panier
+                <div className="pl">
+                  <AddBasket />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       )}

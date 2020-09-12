@@ -8,8 +8,16 @@
   z-index: 2;
 
   &__top {
-    display: flex;
+    @media (min-width: $largeScreen) {
+      width: 80%;
+      margin: auto;
+    }
 
+    @media (min-width: $screen) {
+      // justify-content: space-around;
+    }
+
+    display: flex;
     justify-content: space-between;
 
     &__title {
@@ -22,6 +30,44 @@
       }
     }
 
+    &__band {
+      position: relative;
+      width: 200px;
+      height: 50px;
+      z-index: 2;
+      & > img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__items {
+      @media (min-width: $screen) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        padding-right: 15px;
+        cursor: pointer;
+
+        & > p {
+          padding-left: 5px;
+        }
+      }
+
+      & > a {
+        @media (min-width: $screen) {
+          margin: auto !important;
+        }
+      }
+
+      & > p {
+        @media (max-width: $screen) {
+          display: none;
+        }
+      }
+    }
+
     &__user-logo {
       position: relative;
       display: flex;
@@ -29,15 +75,34 @@
   }
 
   &__bottom {
+    @media (min-width: $largeScreen) {
+      width: 90%;
+      margin: auto;
+    }
+    @media (min-width: $tablet) {
+      justify-content: space-around;
+    }
     padding-top: 10px;
     display: flex;
     justify-content: space-between;
 
     &__search {
+      @media (min-width: $tablet) {
+        width: 80%;
+      }
+
       width: 80%;
     }
 
     &__gift {
+      @media (min-width: $largeScreen) {
+        width: 18%;
+      }
+      @media (min-width: $tablet) and (max-width: $largeScreen) {
+        padding: 0 20px;
+        justify-content: space-around;
+        width: 25%;
+      }
       display: flex;
       align-items: center;
       justify-content: center;
@@ -45,6 +110,29 @@
       background-color: $default-color;
       border-radius: 25rem;
       height: 2.5rem;
+      font-size: 0.8rem;
+      color: $cart-color;
+
+      &__arrow {
+        @media (max-width: $tablet) {
+          display: none;
+        }
+        padding-left: 5px;
+      }
+
+      & > p {
+        @media (max-width: $tablet) {
+          display: none;
+        }
+        padding-left: 10px;
+      }
+
+      & > svg {
+        @media (min-width: $tablet) {
+          margin: 0;
+        }
+        margin: auto;
+      }
     }
   }
 }
@@ -55,23 +143,27 @@
   border-radius: 25rem;
   height: 2.5rem;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   font-size: 0.8rem;
   position: relative;
+  padding-left: 20px;
   &:hover {
     border: 3px solid $primary-color;
   }
 
   &__typing {
+    @media (min-width: $screen) {
+      left: 7%;
+    }
     width: auto;
     text-align: center;
     position: absolute;
-    left: 15%;
+    left: 10%;
   }
 
   &__icon {
-    width: 10%;
+    width: 5%;
     padding: 5px 0 0 0;
   }
 
@@ -93,6 +185,10 @@
   }
 
   &--count {
+    @media (min-width: $screen) {
+      transform: translateY(50%);
+    }
+
     width: 20px;
     height: 16px;
     position: absolute;
@@ -100,6 +196,11 @@
     top: 12%;
   }
   &--number {
+    @media (min-width: $screen) {
+      top: 0%;
+      right: 0%;
+      transform: translate(-60%, 85%);
+    }
     position: absolute;
     font-size: 0.7rem;
     width: 20px;
@@ -110,5 +211,12 @@
     left: 100%;
     transform: translate(-55%, 30%);
     color: $cart-color;
+  }
+
+  &--basket {
+    @media (min-width: $screen) {
+      position: initial;
+    }
+    position: relative;
   }
 }

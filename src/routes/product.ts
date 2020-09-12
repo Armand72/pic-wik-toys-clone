@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 import Products, { IProduct } from "../models/Products";
+const { Auth } = require("../auth/Auth");
 
 router.get("/", async (req: any, res: any) => {
   try {
@@ -20,7 +21,7 @@ router.get("/:id", async (req: any, res: any) => {
   }
 });
 
-router.post("/", async (req: any, res: any) => {
+router.post("/", Auth, async (req: any, res: any) => {
   try {
     const newProduct: IProduct = new Products(req.body);
     const product = await newProduct.save();
@@ -30,7 +31,7 @@ router.post("/", async (req: any, res: any) => {
   }
 });
 
-router.put("/:id", async (req: any, res: any) => {
+router.put("/:id", Auth, async (req: any, res: any) => {
   try {
     const product: IProduct = req.body;
     const _id: string = req.params.id;
@@ -47,7 +48,7 @@ router.put("/:id", async (req: any, res: any) => {
   }
 });
 
-router.delete("/:id", async (req: any, res: any) => {
+router.delete("/:id", Auth, async (req: any, res: any) => {
   try {
     const _id: string = req.params.id;
     const product: IProduct = await Products.findById(_id);

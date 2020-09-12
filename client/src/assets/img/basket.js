@@ -6,7 +6,7 @@ const Basket = () => {
   const totalQuantity = useSelector(fetch);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="logo--basket">
       <svg version="1.1" viewBox="0 0 46 50" className="logo">
         <g fill="none" fill-rule="evenodd">
           <path

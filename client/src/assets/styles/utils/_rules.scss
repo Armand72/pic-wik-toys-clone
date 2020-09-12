@@ -5,3 +5,19 @@ a {
 .index {
   z-index: 1;
 }
+
+.d-none-mins {
+  @media (min-width: $screen) {
+    display: none;
+  }
+}
+
+.d-none-maxls {
+  @media (max-width: $screen) {
+    display: none;
+  }
+}
+
+.ml {
+  margin-left: 2%;
+}

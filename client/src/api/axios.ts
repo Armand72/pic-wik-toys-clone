@@ -1,8 +1,5 @@
 import axios from "axios";
 
-// let token = "Bearer " + localStorage.getItem("token");
-// API.defaults.headers.common["authorization"] = token;
-
 axios.defaults.withCredentials = true;
 
 const API = axios.create();

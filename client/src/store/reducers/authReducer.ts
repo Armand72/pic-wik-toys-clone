@@ -1,5 +1,13 @@
 import { SET_AUTH, auth } from "../actions/types";
 
+export interface Auth {
+  user: {
+    name: string;
+    _id: string;
+    authorized: boolean;
+  };
+}
+
 const initialState = {
   user: {
     authorized: false,

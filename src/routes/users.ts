@@ -1,5 +1,4 @@
 import Users, { IUser } from "../models/Users";
-import { Session } from "inspector";
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
@@ -17,7 +16,7 @@ const createToken = (id) => {
 
 router.post("/", async (req: any, res: any) => {
   try {
-    const email = req.body.email;
+    const email: string = req.body.email;
 
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const check = re.test(email);
@@ -36,7 +35,7 @@ router.post("/", async (req: any, res: any) => {
     const user = await newUser.save();
 
     const { name, _id } = user;
-    res.status(201).json({ user: { name, _id } });
+    res.status(200).json({ user: { name, _id } });
   } catch (err) {
     let errors = "";
     if (err.code === 11000) {
@@ -114,7 +113,6 @@ module.exports = router;
 
 // disconnect current user
 router.post("/disconnect", async (req: any, res: any, next: any) => {
-  console.log("here");
   res.cookie("jwt", "", { maxAge: 1 });
   res.status(200).send({ message: "utilisateur déconnecté" });
 });

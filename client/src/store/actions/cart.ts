@@ -3,6 +3,15 @@ import { SET_CART, GET_PRODUCT, SET_TOTALQUANTITY, Product } from "./types";
 import store from "../store";
 import { setPopup } from "./popup";
 
+export interface Basket {
+  user: string;
+  productList: [];
+  totalPrice: number;
+  totalQuantity: number;
+  fee: string;
+  totalAmount: number;
+}
+
 export const checkCart = async (id: string) => {
   try {
     const response = await API.get(`baskets/${id}`);
@@ -44,7 +53,7 @@ export const checkCart = async (id: string) => {
 };
 
 // add items for the first time for a user
-export const addCart = async (basket: object) => {
+export const addCart = async (basket: Basket) => {
   try {
     const response = await API.post(`baskets`, basket);
 
@@ -68,7 +77,7 @@ export const addCart = async (basket: object) => {
 };
 
 // add items if there are no users
-export const addCartVisitor = async (basket: object) => {
+export const addCartVisitor = async (basket: Basket) => {
   try {
     store.dispatch({
       type: SET_CART,
@@ -88,7 +97,7 @@ export const addCartVisitor = async (basket: object) => {
 };
 
 // add items if there are no users
-export const addCartVisitorApp = async (basket: object) => {
+export const addCartVisitorApp = async (basket: Basket) => {
   try {
     store.dispatch({
       type: SET_CART,
@@ -103,7 +112,7 @@ export const addCartVisitorApp = async (basket: object) => {
 };
 
 // modify cart of an existing cart for a user
-export const modifyCart = async (basket: any) => {
+export const modifyCart = async (basket: Basket) => {
   try {
     const response = await API.put(`baskets/${basket.user}`, basket);
     if (response.status === 200) {

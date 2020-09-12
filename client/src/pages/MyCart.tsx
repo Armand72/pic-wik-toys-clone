@@ -1,5 +1,5 @@
 /* tslint:disable */
-import React, { FunctionComponent, useState, useEffect } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 import {
@@ -21,12 +21,22 @@ import {
 } from "@stripe/react-stripe-js";
 import Axios from "../api/axios";
 import ScrollTop from "../utils/ScrollTop";
-
 import ToysCarousel from "../components/ToyCarousel";
+import { useHistory } from "react-router-dom";
 
-const MyCart: FunctionComponent = (props: any) => {
+export interface Basket {
+  user: string;
+  productList: [];
+  totalPrice: number;
+  totalQuantity: number;
+  fee: string;
+  totalAmount: number;
+}
+
+const MyCart: FunctionComponent = () => {
   ScrollTop();
-  const fetchCart = (state: any) => state.cart;
+  const fetchCart = (state) => state.cart;
+  const history = useHistory();
   let cart = useSelector(fetchCart);
   const {
     productList,
@@ -36,11 +46,11 @@ const MyCart: FunctionComponent = (props: any) => {
     user,
     totalQuantity,
   } = cart;
-  const fetchAuth = (state: any) => state.auth.user;
+  const fetchAuth = (state) => state.auth.user;
   let auth = useSelector(fetchAuth);
 
-  const [visible, setVisible] = useState(false);
-  const [receipt, setReceipt] = useState("");
+  const [visible, setVisible] = useState<boolean>(false);
+  const [receipt, setReceipt] = useState<string>("");
 
   const stripe = useStripe();
   const elements = useElements();
@@ -84,7 +94,7 @@ const MyCart: FunctionComponent = (props: any) => {
       newTotalPrice = Math.round(newTotalPrice * 100) / 100;
       newTotalAmount = Math.round(newTotalAmount * 100) / 100;
 
-      const basket = {
+      const basket: Basket = {
         user,
         productList: newProductList,
         totalPrice: newTotalPrice,
@@ -107,8 +117,7 @@ const MyCart: FunctionComponent = (props: any) => {
   const updateCart = (
     addedAmount: number,
     newQuantity: number,
-    index: number,
-    price: number
+    index: number
   ) => {
     let newTotalPrice = totalPrice + addedAmount;
 
@@ -136,7 +145,7 @@ const MyCart: FunctionComponent = (props: any) => {
     newTotalPrice = Math.round(newTotalPrice * 100) / 100;
     newTotalAmount = Math.round(newTotalAmount * 100) / 100;
 
-    const basket = {
+    const basket: Basket = {
       user,
       productList: newProductList,
       totalPrice: newTotalPrice,
@@ -155,7 +164,7 @@ const MyCart: FunctionComponent = (props: any) => {
 
   // payment stripe
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (elements === null || stripe === null) return;
@@ -188,58 +197,96 @@ const MyCart: FunctionComponent = (props: any) => {
   return (
     <>
       <div className="cart">
-        <div className="cart__container">
-          <h1>Mon panier</h1>
-          {productList.length === 0 && <h1>Votre panier est vide!</h1>}
-          <div className="cart__list">
-            {productList &&
-              productList.map((props: any, index: number) => (
-                <CartItem
-                  key={index}
-                  {...props}
-                  updateCart={updateCart}
-                  index={index}
-                  deleteItem={deleteItem}
-                />
-              ))}
-          </div>
-        </div>
-        <div className="cart__recap">
-          <h1>Récapitulatif</h1>
+        <h1 className="cart__title">Mon panier</h1>
+        {productList.length === 0 && (
+          <>
+            <div className="empty-cart">
+              <div className="empty-cart__image">
+                <img src="/images/mascot.png" alt="mascot of pic wik toys" />
+              </div>
+              <div className="empty-cart__container">
+                <h2 className="empty-cart__container__title">ZUT!</h2>
+                <p className="empty-cart__container__empty-text">
+                  Votre panier est vide!
+                </p>
+                <p className="empty-cart__container__text">
+                  Découvrez tous nos jouets qui feront la joie de vos enfants!
+                </p>
+                <button
+                  className="button button__empty"
+                  onClick={() => history.push("/5f47cb6a97e330924c19230d")}
+                >
+                  Continuer mon shopping
+                  <div></div>
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+        {productList.length > 0 && (
+          <>
+            <div className="cart--desktop">
+              <div className="cart__container">
+                <div className="cart__list">
+                  {productList &&
+                    productList.map((props, index: number) => (
+                      <CartItem
+                        key={index}
+                        {...props}
+                        updateCart={updateCart}
+                        index={index}
+                        deleteItem={deleteItem}
+                      />
+                    ))}
+                </div>
+              </div>
+              <div className="cart__recap">
+                <h1>Récapitulatif</h1>
 
-          <div className="confirmationBasket__price">
-            <div className="confirmationBasket__price__item border">
-              <p className="text--small">Valeur du panier</p>
-              <p className="text--small">{totalPrice}€</p>
-            </div>
-            <div className="confirmationBasket__price__item border">
-              <p className="text--small">Frais de livraison</p>
-              <p className="text--blue">{totalPrice === 0 ? "" : fee}</p>
-            </div>
-            <div className="confirmationBasket__price__item ">
-              <p className="text--weight">Total TTC</p>
-              <p className="text--weight">
-                {totalPrice === 0 ? "0" : totalAmount}€
-              </p>
-            </div>
-          </div>
+                <div className="confirmationBasket__price">
+                  <div className="confirmationBasket__price__item border">
+                    <p className="text--small">Valeur du panier</p>
+                    <p className="text--small">{totalPrice}€</p>
+                  </div>
+                  <div className="confirmationBasket__price__item border">
+                    <p className="text--small">Frais de livraison</p>
+                    <p className="text--blue">{totalPrice === 0 ? "" : fee}</p>
+                  </div>
+                  <div className="confirmationBasket__price__item ">
+                    <p className="text--weight">Total TTC</p>
+                    <p className="text--weight">
+                      {totalPrice === 0 ? "0" : totalAmount}€
+                    </p>
+                  </div>
+                </div>
 
-          <button
-            className={
-              totalPrice === 0
-                ? "button button__main index button--small button__main--disabled "
-                : "button button__main index button--small"
-            }
-            disabled={totalPrice === 0 ? true : false}
-            onClick={auth.authorized ? () => setVisible(true) : account}
-          >
-            Commander
-            <div></div>
-          </button>
-        </div>
+                <button
+                  className={
+                    totalPrice === 0
+                      ? "button button__main index button--small button__main--disabled "
+                      : "button button__main index button--small"
+                  }
+                  disabled={totalPrice === 0 ? true : false}
+                  onClick={auth.authorized ? () => setVisible(true) : account}
+                >
+                  Commander
+                  <div></div>
+                </button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
+      {productList.length > 0 && (
+        <>
+          <div className="header-buddies">
+            <img src="./images/buddies.svg"></img>
+            <p>A ne pas oublier</p>
+          </div>
 
-      <ToysCarousel />
+          <ToysCarousel />
+        </>
+      )}
 
       {visible && (
         <div className="modal">
@@ -270,16 +317,13 @@ const MyCart: FunctionComponent = (props: any) => {
                 <CardCvcElement />
               </label>
               {receipt ? (
-                <p className="mt">
-                  Voici votre reçu :
-                  <a
-                    className="modal__container__link"
-                    target="_blank"
-                    href={receipt}
-                  >
-                    LIEN
-                  </a>
-                </p>
+                <a
+                  className="modal__container__link"
+                  target="_blank"
+                  href={receipt}
+                >
+                  VOTRE REÇU
+                </a>
               ) : (
                 <button
                   className={

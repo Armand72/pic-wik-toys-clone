@@ -1,4 +1,8 @@
 .footer {
+  @media (min-width: $screen) {
+    display: flex;
+    flex-direction: row;
+  }
   background-color: $primary-color;
   display: flex;
   flex-direction: column;
@@ -27,5 +31,33 @@
     padding: 0.5rem 0;
     font-size: 0.8rem;
     color: $default-color;
+  }
+
+  &__container {
+    @media (min-width: $screen) {
+      width: 80%;
+      margin: 3% auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    &__items {
+      max-width: 20%;
+      & > h2 {
+        font-family: $picwik;
+        color: white;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+    }
+
+    &__lists {
+      margin-top: 5%;
+      color: $navigation;
+      list-style-type: none;
+
+      & > li {
+        padding: 5px 0;
+      }
+    }
   }
 }
