@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest",
     "server": "nodemon server.ts",
+    "start": "node server.ts",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
@@ -22,6 +23,7 @@
   "bugs": {
     "url": "https://github.com/Armand72/template-react/issues"
   },
+  "proxy": "http://localhost:4000",
   "homepage": "https://github.com/Armand72/template-react#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",

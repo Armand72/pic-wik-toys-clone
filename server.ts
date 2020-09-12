@@ -41,8 +41,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
-console.log(__dirname);
-
 const port = process.env.PORT || SERVER_ADDRESS;
 const server = require("http").createServer(app);
 server.listen(parseInt(port), () => {
