@@ -4,6 +4,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const cors = require("cors");
+var path = require("path");
 
 const api = require("./routes");
 const connectDB = require("./config/config.ts");
@@ -33,6 +34,12 @@ app.use(
 );
 
 app.use("/api", api);
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 const port = process.env.PORT || SERVER_ADDRESS;
 const server = require("http").createServer(app);
