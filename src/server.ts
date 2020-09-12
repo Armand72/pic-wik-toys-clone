@@ -34,9 +34,10 @@ app.use(
 
 app.use("/api", api);
 
+const port = process.env.PORT || SERVER_ADDRESS;
 const server = require("http").createServer(app);
-server.listen(SERVER_ADDRESS, () => {
-  console.log(`server is listening on port ${SERVER_ADDRESS}`);
+server.listen(port, () => {
+  console.log(`server is listening on port ${port}`);
 });
 
 module.exports = server;
