@@ -5,7 +5,7 @@ require("dotenv").config();
 const DB =
   process.env.NODE_ENV === "test" ? process.env.DB_TEST : process.env.DB;
 
-const connectDB = async () => {
+const connectDB_APP = async () => {
   try {
     await mongoose.connect(DB, {
       useNewUrlParser: true,
@@ -19,4 +19,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+module.exports = connectDB_APP;

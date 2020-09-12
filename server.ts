@@ -1,7 +1,7 @@
 const parser = require("body-parser");
-const express = require("express");
+const expressApp = require("express");
 const cookieParser = require("cookie-parser");
-const app = express();
+const app = expressApp();
 const cors = require("cors");
 var path = require("path");
 
@@ -34,7 +34,7 @@ app.use(
 
 app.use("/api", api);
 
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(expressApp.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
