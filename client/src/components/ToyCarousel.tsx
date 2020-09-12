@@ -13,6 +13,9 @@ const ToyCarousel: FunctionComponent = () => {
 
   useEffect(() => {
     getProducts();
+  }, []);
+
+  useEffect(() => {
     setToys(product);
   }, [product]);
 

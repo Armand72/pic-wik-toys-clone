@@ -3,11 +3,12 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // create json web token
 const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id) => {
-  return jwt.sign({ id }, "my secret", {
+  return jwt.sign({ id }, process.env.SECRETJWT, {
     expiresIn: maxAge,
   });
 };
@@ -90,7 +91,7 @@ module.exports = router;
 router.post("/check", async (req: any, res: any, next: any) => {
   const token = req.cookies.jwt;
   if (token) {
-    jwt.verify(token, "my secret", async (err, decodedToken) => {
+    jwt.verify(token, process.env.SECRETJWT, async (err, decodedToken) => {
       if (err) {
         console.log("wrong token");
       } else {

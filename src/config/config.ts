@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 require("dotenv").config();
-const DB = process.env.DB;
+
+const DB =
+  process.env.NODE_ENV === "test" ? process.env.DB_TEST : process.env.DB;
 
 const connectDB = async () => {
   try {

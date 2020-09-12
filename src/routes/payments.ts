@@ -1,9 +1,8 @@
 import Products, { IProduct } from "../models/Products";
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
-const stripe = require("stripe")(
-  "sk_test_51HPjswGZm9C9etrMsq8gj129iTSIo1EsNTBAA3JuI5s18rPGQabyd6Jmpq9WRo4ra4sOCrPEKKr10efE4Y768ULA00sHmwyZAn"
-);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 const { Auth } = require("../auth/Auth");
 
 router.post("/", Auth, async (req: any, res: any) => {
