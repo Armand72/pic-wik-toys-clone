@@ -7,9 +7,12 @@ import * as serviceWorker from "./serviceWorker";
 import { checkUser } from "./store/actions/auth";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-const stripePromise = loadStripe(
-  "pk_test_51HPjswGZm9C9etrMvpnZNiCZUBTRtkMLrbF92Wu2bgzClCooFM7flcJNlxYhqefMhDZA8OiwlDbeJ2AOApK71IgD005RDRuZJE"
-);
+
+let public_key = process.env.REACT_APP_PUBLIC_STRIPE_KEY;
+let stripePromise;
+if (public_key !== undefined) {
+  stripePromise = loadStripe(public_key);
+}
 
 checkUser();
 
