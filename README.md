@@ -1,8 +1,8 @@
 
 
-## Welcome to the pic-wik-toys-clone project
+## 🤖 Welcome to the pic-wik-toys-clone project 😀
 
-### Currently researching a job or a company that would hire me for one year for a work-based training. To see my other projects, [I have a portfolio][website] or [my linkedin][linkedin]
+### Currently researching a job or a company that would hire me for one year for a work-based training. 💻 To see my other projects, [I have a portfolio][website] or [my linkedin][linkedin]
 
 I was able to learn new technologies like mongoDB, a payment API (Stripe), typescript and hooks with react. It required lots of research on the internet in order to comprehend the full extent of each technology. The project is a clone of [the following website][cloneurl].
 
@@ -10,12 +10,12 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
 - select a product
 - choose a quantity
 - create an account
-- Check your basket
-- Pay
+- check your cart 🧺
+- pay
 
 The website has been secured thanks to cookies, dotenv, bcrypt and jsonwebtoken.
 
-### Technologies
+### Technologies ⚙️
 
 <div style="display:flex;justify-content:center;">
 
@@ -29,28 +29,28 @@ The website has been secured thanks to cookies, dotenv, bcrypt and jsonwebtoken.
   <img src="https://i.ibb.co/djVY283/stripe2.png" width="50" height="50" title="stripe">
 </div>
 
-### Install the repository
+### Install the repository 📩
 
 The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>.
 <b>Create 2 .env</b>: one in the root folder the other in the client folder.
 
 <b>.env in the root folder</b>
 
-SERVER_ADDRESS = port (Ex: 4000)
-DB = link to your mongodb atlas cluster
-URL_DOMAIN = URL for the domain name (in this case: https://pic-wik-toys-clone.herokuapp.com/)
-URL_LOCALHOST = URL for localhost  (Ex: http://localhost:3000)
-STRIPE_KEY = Private key given by stripe 
-SECRETJWT = JWT secret for tokenisation
-DB_TEST = link to the mongodb cluster for testing
+- SERVER_ADDRESS = port (Ex: 4000)
+- DB = link to your mongodb atlas cluster
+- URL_DOMAIN = URL for the domain name (in this case: https://pic-wik-toys-clone.herokuapp.com/)
+- URL_LOCALHOST = URL for localhost  (Ex: http://localhost:3000)
+- STRIPE_KEY = Private key given by stripe 
+- SECRETJWT = JWT secret for tokenisation
+- DB_TEST = link to the mongodb cluster for testing
 
 <b>.env in the client folder</b>
 
-REACT_APP_SERVER_ADDRESS = server address/api/ (Ex: http://localhost:4000/api/)
-REACT_APP_URL_ADDRESS = URL address/api/ (Ex: https://pic-wik-toys-clone.herokuapp.com/api/)
-PUBLIC_STRIPE_KEY =  Public key given by stripe 
+- REACT_APP_SERVER_ADDRESS = server address/api/ (Ex: http://localhost:4000/api/)
+- REACT_APP_URL_ADDRESS = URL address/api/ (Ex: https://pic-wik-toys-clone.herokuapp.com/api/)
+- PUBLIC_STRIPE_KEY =  Public key given by stripe 
 
-### Start Project 
+### Start Project 🏃
 
 Use `npm run dev` in the root folder in order to launch the back and front concurrently.
 
