@@ -11,18 +11,18 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
 
   <img src="https://i.ibb.co/f0Kp7cw/github.png" width="50" height="50" title="hover text">
 
-<p align="center">
+
   <img src="https://i.ibb.co/d6kyD08/react.png" width="50" height="50" title="hover text">
-</p>
-<p align="center">
+
+
   <img src="https://i.ibb.co/GVdFnW1/sass.png" width="50" height="50" title="hover text">
-</p>
-<p align="center">
+
+
   <img src="https://i.ibb.co/vhynR80/nodejs.png " width="50" height="50" title="hover text">
-</p>
-<p align="center">
+
+
   <img src="https://i.ibb.co/djVY283/stripe2.png" width="50" height="50" title="hover text">
-</p>
+
   
   </div>
  
