@@ -9,7 +9,6 @@ router.post("/", Auth, async (req: any, res: any) => {
   try {
     const { amount, source, receipt_email } = req.body;
 
-    console.log(source);
     const charge = await stripe.charges.create({
       amount,
       currency: "eur",

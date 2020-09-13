@@ -10,6 +10,7 @@ export const registrationUser = async (data) => {
     const response = await API.post("users", data);
 
     if (response.status === 200) {
+      closeModal();
       const name = response.data.user.name;
       const _id = response.data.user._id;
 
@@ -43,7 +44,6 @@ export const registrationUser = async (data) => {
         localStorage.setItem("cart", JSON.stringify(basket));
       }
     }
-    closeModal();
   } catch (err) {
     console.log(err.response);
     setPopup({
@@ -58,6 +58,7 @@ export const loginUser = async (data) => {
   try {
     const response = await API.post("users/login", data);
     if (response.status === 200) {
+      closeModal();
       const name = response.data.user.name;
       const _id = response.data.user._id;
 
@@ -90,7 +91,6 @@ export const loginUser = async (data) => {
         await API.post(`baskets`, basket);
         localStorage.setItem("cart", JSON.stringify(basket));
       }
-      closeModal();
     }
   } catch (err) {
     console.log(err.response);
@@ -119,7 +119,6 @@ export const checkUser = async () => {
         payload,
       });
     }
-    closeModal();
   } catch (err) {
     console.log(err.response);
     const payload = {
