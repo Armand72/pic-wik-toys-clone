@@ -6,6 +6,6 @@
     "sourceMap": true,
     "lib": ["es6"]
   },
-  "include": ["src/**/*.ts", "server.ts"],
+  "include": ["src/**/*.ts", "src/server.ts"],
   "exclude": ["node_modules", ".vscode"]
 }

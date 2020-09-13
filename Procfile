@@ -1,1 +1,1 @@
-web:./build/node server.js
+web:./src/build/node server.js

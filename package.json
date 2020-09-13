@@ -1,10 +1,10 @@
 {
   "name": "template-react-typescript-mongodb",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "src/server.ts",
   "scripts": {
     "test": "jest",
-    "server": "nodemon server.ts",
+    "server": "nodemon src/server.ts",
     "start": "node ./build/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
