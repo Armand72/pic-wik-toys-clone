@@ -10,9 +10,17 @@ I was able to to train with this project on new technologies like mongoDB, a pay
 
 
 
-  <p align="center">
-  <img alt="React" width="26px" src="https://i.ibb.co/d6kyD08/react.png>
+  <p align="left">
+    <img alt="React" width="20px" src="https://i.ibb.co/d6kyD08/react.png>
   </p>
+                                       
+  <p align="left">
+    <img alt="Typescript" width="26px" src="https://i.ibb.co/d6kyD08/react.png>
+  </p>
+                                              <p align="left">
+    <img alt="Typescript" width="26px" src="https://i.ibb.co/d6kyD08/react.png>
+  </p>
+
 
   
   
