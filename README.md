@@ -1,4 +1,4 @@
-![ScreenShot](https://i.ibb.co/f0Kp7cw/github.png)
+![ScreenShot](https://i.ibb.co/f0Kp7cw/github.png =250x250)
 ## Welcome to the pic-wik-toys-clone project
 
 I was able to to train with this project on new technologies like mongoDB, a payment API (Stripe), typescript and hooks with react.
