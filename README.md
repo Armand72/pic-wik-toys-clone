@@ -1,7 +1,5 @@
 
-<p align="center">
-  <img src="https://i.ibb.co/f0Kp7cw/github.png " width="350" title="hover text">
-</p>
+
 ## Welcome to the pic-wik-toys-clone project
 
 I was able to to train with this project on new technologies like mongoDB, a payment API (Stripe), typescript and hooks with react.
@@ -9,17 +7,10 @@ I was able to to train with this project on new technologies like mongoDB, a pay
 ### Currently researching a job or a company that would hire me for one year for a work-based training. To see my other projects, [I have a portfolio][website]
 
 
+<p align="center">
+  <img src="https://i.ibb.co/f0Kp7cw/github.png " width="20" height="20" title="hover text">
+</p>
 
-  <p align="left">
-    <img alt="React" width="20px" src="https://i.ibb.co/d6kyD08/react.png>
-  </p>
-                                       
-  <p align="left">
-    <img alt="Typescript" width="26px" src="https://i.ibb.co/d6kyD08/react.png>
-  </p>
-                                              <p align="left">
-    <img alt="Typescript" width="26px" src="https://i.ibb.co/d6kyD08/react.png>
-  </p>
 
 
   
