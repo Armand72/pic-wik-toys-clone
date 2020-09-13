@@ -8,7 +8,7 @@ I was able to to train with this project on new technologies like mongoDB, a pay
 
 
   
-  [<img align="left" alt="Visual Studio Code" width="26px" src="https://ibb.co/Vxn458f />]
+  [<img align="left" alt="Visual Studio Code" width="26px" src="https://i.ibb.co/f0Kp7cw/github.png/>]
   
   [<img align="left" alt="Visual Studio Code" width="26px" src="https://ibb.co/6bD5FRj />]
   
