@@ -5,8 +5,8 @@ const app = expressApp();
 const cors = require("cors");
 var path = require("path");
 
-const api = require("./src/routes");
-const connectDB = require("./src/config/config");
+const api = require("./routes");
+const connectDB = require("./config/config");
 
 require("dotenv").config();
 
