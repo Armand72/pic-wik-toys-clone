@@ -8,10 +8,10 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
 
 
 
-<p align="center">
+![]<p align="center">
   <img src="https://i.ibb.co/f0Kp7cw/github.png" width="50" height="50" title="hover text">
 </p>
-<p align="center">
+![]<p align="center">
   <img src="https://i.ibb.co/d6kyD08/react.png" width="50" height="50" title="hover text">
 </p>
 <p align="center">
