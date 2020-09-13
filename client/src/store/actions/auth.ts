@@ -33,7 +33,7 @@ export const registrationUser = async (data) => {
       const basket = JSON.parse(localStorage.getItem("cart") || "{}");
       basket.user = _id;
 
-      if (Object.keys(basket).length) {
+      if (basket?.productList) {
         store.dispatch({
           type: SET_CART,
           payload: { ...basket },
@@ -81,7 +81,7 @@ export const loginUser = async (data) => {
       const basket = JSON.parse(localStorage.getItem("cart") || "{}");
       basket.user = _id;
 
-      if (Object.keys(basket).length) {
+      if (basket?.productList) {
         store.dispatch({
           type: SET_CART,
           payload: { ...basket },
