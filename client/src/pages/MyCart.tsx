@@ -280,7 +280,7 @@ const MyCart: FunctionComponent = () => {
       {productList.length > 0 && (
         <>
           <div className="header-buddies">
-            <img src="./images/buddies.svg"></img>
+            <img src="./images/buddies.svg" alt="buddies"></img>
             <p>A ne pas oublier</p>
           </div>
 
@@ -321,6 +321,7 @@ const MyCart: FunctionComponent = () => {
                   className="modal__container__link"
                   target="_blank"
                   href={receipt}
+                  rel="noopener noreferrer"
                 >
                   VOTRE REÇU
                 </a>

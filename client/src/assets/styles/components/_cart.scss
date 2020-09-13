@@ -33,7 +33,7 @@
       width: 30%;
       background-color: white;
       padding: 2rem;
-      max-height: 40vh;
+      max-height: 60vh;
     }
     &:after {
       @media (min-width: $screen) {
@@ -57,6 +57,7 @@
 
     & > h1 {
       font-size: 1.5rem;
+      padding: 0 10px;
     }
 
     &:before {

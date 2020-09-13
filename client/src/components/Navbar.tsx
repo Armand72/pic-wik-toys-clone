@@ -33,7 +33,7 @@ const Navbar: FunctionComponent = () => {
             <Menu />
           </div>
           <div className="d-none-maxls navbar__top__band">
-            <img src="/images/band.png"></img>
+            <img src="/images/band.png" alt="band of brothers"></img>
           </div>
           <Link to={`/`}>
             <div className="navbar__top__title">

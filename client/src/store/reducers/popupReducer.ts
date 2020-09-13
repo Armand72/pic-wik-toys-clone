@@ -1,4 +1,4 @@
-import { SET_POPUP, CLOSE_POPUP, popup } from "../actions/types";
+import { SET_POPUP, CLOSE_POPUP } from "../actions/types";
 
 const initialState = {
   data: { visible: false, class: "", message: "" },

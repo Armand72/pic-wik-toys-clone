@@ -1,5 +1,5 @@
 import API from "../../api/axios";
-import { SET_CART, GET_PRODUCT, SET_TOTALQUANTITY, Product } from "./types";
+import { SET_CART } from "./types";
 import store from "../store";
 import { setPopup } from "./popup";
 

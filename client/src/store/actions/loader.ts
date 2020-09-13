@@ -1,4 +1,3 @@
-import API from "../../api/axios";
 import { SET_LOADER, CLOSE_LOADER } from "./types";
 import store from "../store";
 

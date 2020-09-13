@@ -44,7 +44,7 @@
     &__item {
       display: flex;
       justify-content: space-between;
-      padding: 15px 0;
+      padding: 15px 10px;
 
       & > :nth-child(1) {
         width: 80%;
@@ -97,6 +97,12 @@
 
   &--small {
     width: 200px;
+  }
+
+  &--medium {
+    @media (min-width: $screen) {
+      width: 300px;
+    }
   }
 
   &__main {

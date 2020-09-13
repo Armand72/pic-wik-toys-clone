@@ -1,5 +1,5 @@
 import API from "../../api/axios";
-import { GET_PRODUCTS, GET_PRODUCT, SET_TOTALQUANTITY, Product } from "./types";
+import { GET_PRODUCTS, GET_PRODUCT, Product } from "./types";
 import store from "../store";
 
 export const getProducts = async () => {

@@ -296,12 +296,12 @@ const ProductPresentation: FunctionComponent = (props: any) => {
                   </div>
                 </div>
                 <Link to={`/panier`}>
-                  <button className="button button__main ">
+                  <button className="button button__main button--medium">
                     Voir mon panier
                     <div></div>
                   </button>
                 </Link>
-                <button className="button button__secondary  mt">
+                <button className="button button__secondary button--medium  mt">
                   Continuer mes achats
                   <div></div>
                 </button>

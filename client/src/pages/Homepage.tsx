@@ -4,7 +4,6 @@ import CatchPhrase from "../components/Catchphrase";
 import DeliveryCarousel from "../components/DeliveryCarousel";
 import ToyPresentation from "../components/ToyPresentation";
 import PromoCarousel from "../components/PromoCarousel";
-import Newsletter from "../components/Newsletter";
 import ScrollTop from "../utils/ScrollTop";
 
 const Homepage: FunctionComponent = () => {
@@ -17,7 +16,6 @@ const Homepage: FunctionComponent = () => {
       <DeliveryCarousel />
       <ToyPresentation />
       <DeliveryCarousel />
-      {/* <Newsletter /> */}
     </>
   );
 };

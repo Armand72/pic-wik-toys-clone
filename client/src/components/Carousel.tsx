@@ -38,7 +38,6 @@ const swipePower = (offset: number, velocity: number) => {
 
 const Carousel: FunctionComponent = () => {
   const [[page, direction], setPage] = useState<number[]>([0, 0]);
-  const [axis, setAxis] = useState<string | boolean>(false);
 
   const dimension = windowSize();
   let buttonCarousel;
@@ -71,14 +70,6 @@ const Carousel: FunctionComponent = () => {
     }
   };
 
-  const switchAxis = (axis: string) => {
-    if (axis === "y") {
-      setAxis(false);
-    } else {
-      setAxis("x");
-    }
-  };
-
   return (
     <>
       <div className="carousel">
@@ -94,8 +85,6 @@ const Carousel: FunctionComponent = () => {
             drag={dimension.width < 960 ? false : "x"}
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={1}
-            dragDirectionLock
-            onDirectionLock={(axis) => switchAxis(axis)}
             onDragEnd={(e, { offset, velocity }) => {
               const swipe = swipePower(offset.x, velocity.x);
               let total: number;
