@@ -7,7 +7,7 @@
 I was able to learn new technologies like mongoDB, a payment API (Stripe), typescript and hooks with react. It required lots of research on the internet in order to comprehend the full extent of each technology. The project is a clone of [the following website][cloneurl]
 
 
- <div style="display: flex;">
+ <div style="display:flex;">
 <p align="center">
   <img src="https://i.ibb.co/f0Kp7cw/github.png" width="50" height="50" title="hover text">
 </p>
@@ -20,7 +20,7 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
 <p align="center">
   <img src="https://i.ibb.co/vhynR80/nodejs.png " width="50" height="50" title="hover text">
 </p>
-[<p align="center">
+<p align="center">
   <img src="https://i.ibb.co/djVY283/stripe2.png" width="50" height="50" title="hover text">
 </p>
   
