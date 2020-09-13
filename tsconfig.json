@@ -4,7 +4,8 @@
     "module": "commonjs",
     "outDir": "./build", // target for compiled files
     "sourceMap": true,
-    "lib": ["es6"]
+    "lib": ["es6"],
+    "allowJs": true
   },
   "include": ["src/**/*.ts", "src/server.ts"],
   "exclude": ["node_modules", ".vscode"]

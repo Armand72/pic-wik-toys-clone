@@ -299,23 +299,26 @@ const MyCart: FunctionComponent = () => {
               <h2>Veuillez remplir les champs.</h2>
             </div>
             <div className="text--small mb">
-              <p>(Numéro carte test : 4242 4242 4242 4242)</p>
+              <p>
+                (Numéro carte test : 4242 4242 4242 4242 / date: 04/24 / CVC:444
+                )
+              </p>
             </div>
             <form
               onSubmit={handleSubmit}
               className="modal__container__formPayment"
             >
-              <label>
+              <div>
                 Numéro de carte
                 <CardNumberElement />
-              </label>
-              <label>
-                date d'expiration <CardExpiryElement />
-              </label>
-              <label>
+              </div>
+              <div>
+                Date d'expiration <CardExpiryElement />
+              </div>
+              <div>
                 CVC
                 <CardCvcElement />
-              </label>
+              </div>
               {receipt ? (
                 <a
                   className="modal__container__link"

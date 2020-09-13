@@ -68,9 +68,18 @@
     &__formPayment {
       @media (min-width: $screen) {
         height: auto;
-        padding-bottom: 10px;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       width: 100%;
+
+      & > div {
+        width: 80%;
+        margin: auto;
+        font-weight: bold;
+      }
     }
 
     &__link {
@@ -89,8 +98,7 @@
   padding: 10px 14px;
   font-size: 1em;
   font-family: "Source Code Pro", monospace;
-  box-shadow: rgba(50, 50, 93, 0.14902) 0px 1px 3px,
-    rgba(0, 0, 0, 0.0196078) 0px 1px 0px;
+  box-shadow: $primary-color 0px 1px 3px, $primary-color 0px 1px 0px;
   border: 0;
   outline: 0;
   border-radius: 4px;

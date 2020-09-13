@@ -1,4 +1,7 @@
 .popup {
+  @media (min-width: $screen) {
+    width: 20%;
+  }
   width: 80%;
   height: 3rem;
   position: fixed;
