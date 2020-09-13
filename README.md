@@ -8,7 +8,7 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
 
 
 
-
+<div display="flex">
 <p align="center">
   <img src="https://i.ibb.co/f0Kp7cw/github.png" width="50" height="50" title="hover text">
 </p>
@@ -22,8 +22,9 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
   <img src="https://i.ibb.co/vhynR80/nodejs.png " width="50" height="50" title="hover text">
 </p>
 <p align="center">
-  <img src="https://i.ibb.co/L130KTb/stripe.webp " width="50" height="50" title="hover text">
+  <img src="https://i.ibb.co/L130KTb/stripe.webp" width="50" height="50" title="hover text">
 </p>
+  </div>
 
 
 
