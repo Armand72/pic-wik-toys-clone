@@ -15,20 +15,24 @@ I was able to learn new technologies like mongoDB, a payment API (Stripe), types
 
 The website has been secured thanks to cookies, dotenv, bcrypt and jsonwebtoken.
 
+### Technologies
+
 <div style="display:flex;justify-content:center;">
 
   <img src="https://i.ibb.co/f0Kp7cw/github.png" width="50" height="50" padding="5" title="github">
   <img src="https://i.ibb.co/d6kyD08/react.png" width="50" height="50" title="react">
   <img src="https://i.ibb.co/X2cMhQ0/redux.png" width="50" height="50" title="redux">
+   <img src="https://i.ibb.co/GshqzgP/typescript-1.png" width="50" height="50" title="typescript">
   <img src="https://i.ibb.co/GVdFnW1/sass.png" width="50" height="50" title="sass">
-  <img src="https://i.ibb.co/vhynR80/nodejs.png " width="50" height="50" title="nodejs">
+  <img src="https://i.ibb.co/vhynR80/nodejs.png" width="50" height="50" title="nodejs">
+   <img src="https://i.ibb.co/FBBVg06/jestlogo.png" width="50" height="50" title="jest">
   <img src="https://i.ibb.co/djVY283/stripe2.png" width="50" height="50" title="stripe">
 </div>
 
 ### Install the repository
 
--The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>.
-- Create 2 .env: one in the root folder the other in the client folder.
+The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>.
+<b>Create 2 .env</b>: one in the root folder the other in the client folder.
 
 <b>.env in the root folder</b>
 
@@ -41,9 +45,16 @@ SECRETJWT = JWT secret for tokenisation
 DB_TEST = link to the mongodb cluster for testing
 
 <b>.env in the client folder</b>
+
 REACT_APP_SERVER_ADDRESS = server address/api/ (Ex: http://localhost:4000/api/)
 REACT_APP_URL_ADDRESS = URL address/api/ (Ex: https://pic-wik-toys-clone.herokuapp.com/api/)
 PUBLIC_STRIPE_KEY =  Public key given by stripe 
+
+### Start Project 
+
+Use `npm run dev` in the root folder in order to launch the back and front concurrently.
+
+Use `npm test`to run the test with jest
 
 
 
