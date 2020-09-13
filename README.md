@@ -1,4 +1,4 @@
-![ScreenShot](<img align="left" alt="Visual Studio Code" width="26px" src="https://ibb.co/q14swZQ />)
+![ScreenShot](https://ibb.co/q14swZQ)
 ## Welcome to the pic-wik-toys-clone project
 
 I was able to to train with this project on new technologies like mongoDB, a payment API (Stripe), typescript and hooks with react.
