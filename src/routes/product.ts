@@ -51,6 +51,7 @@ router.put("/:id", Auth, async (req: any, res: any) => {
 router.delete("/:id", Auth, async (req: any, res: any) => {
   try {
     const _id: string = req.params.id;
+
     const product: IProduct = await Products.findById(_id);
     await product.remove();
     res.json(product);

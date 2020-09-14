@@ -29,6 +29,7 @@ router.put("/:id", Auth, async (req: any, res: any) => {
   try {
     const basket: IBasket = req.body;
     const user: string = req.params.id;
+
     const updatedProduct: IBasket = await Basket.findOneAndUpdate(
       { user },
       basket

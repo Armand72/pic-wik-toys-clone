@@ -21,7 +21,8 @@
 
   &__container {
     @media (min-width: $screen) {
-      width: 50vw;
+      padding: 1rem 4rem;
+      width: auto;
     }
     position: absolute;
     top: 50%;
@@ -38,15 +39,20 @@
     overflow: hidden;
 
     &__close {
-      position: absolute;
-      right: 5%;
-      color: $primary-color;
+      position: relative;
+      color: #00b0e7;
       font-weight: bold;
       font-size: 1.5rem;
+      text-align: right;
       cursor: pointer;
+      left: 5%;
+      margin-left: 2rem;
     }
 
     &--account {
+      @media (min-width: $screen) {
+        width: 80vh;
+      }
       height: auto;
       margin-top: 0;
     }
@@ -63,6 +69,11 @@
       font-size: 0.8rem;
       color: $cart-color;
       padding: 20px 0;
+      text-align: center;
+    }
+
+    &__subtitle {
+      text-align: center;
     }
 
     &__formPayment {
@@ -83,10 +94,19 @@
     }
 
     &__link {
+      @media (min-width: $screen) {
+        padding: 4rem;
+        font-size: 4rem;
+      }
+
+      text-align: center;
       color: $primary-color;
       font-weight: bold;
       font-family: $picwik;
       font-size: 1.5rem;
+      padding: 2rem;
+      border: 2rem solid $primary-color;
+      text-shadow: 0.3rem 0.3rem 0 $secondary-color;
     }
   }
 }

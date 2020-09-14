@@ -98,6 +98,10 @@
     align-items: center;
 
     &__image {
+      @media (min-width: $screen) {
+        margin-left: 1rem;
+      }
+
       width: 100px;
       height: 100px;
       border: 1px solid $default-color;
@@ -120,6 +124,10 @@
     align-items: center;
     justify-content: space-between;
     &__quantity {
+      @media (min-width: $screen) {
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+      }
       width: 150px;
     }
 
@@ -132,6 +140,12 @@
       font-weight: bold;
       font-size: 1.5rem;
       text-align: right;
+    }
+
+    &__info {
+      @media (min-width: $screen) {
+        margin-right: 1rem;
+      }
     }
   }
 
@@ -255,12 +269,12 @@
     &__title {
       @media (max-width: $screen) {
         font-size: 4rem;
-        text-shadow: 0.3rem 0.3rem 0 #ffd400;
+        text-shadow: 0.3rem 0.3rem 0 $secondary-color;
       }
       text-align: center;
       font-family: $picwik;
       font-size: 8rem;
-      text-shadow: 0.5rem 0.5rem 0 #ffd400;
+      text-shadow: 0.5rem 0.5rem 0 $secondary-color;
       color: white;
       margin: 0;
     }

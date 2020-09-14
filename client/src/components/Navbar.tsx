@@ -66,16 +66,7 @@ const Navbar: FunctionComponent = () => {
                 <span className="search__typing">
                   Je recherche{" "}
                   <Typical
-                    steps={[
-                      "une balançoire",
-                      8000,
-                      "un vélo",
-                      8000,
-                      "une peluche",
-                      8000,
-                      "un jouet",
-                      8000,
-                    ]}
+                    steps={["une balançoire", 8000]}
                     loop={Infinity}
                     wrapper="b"
                   />

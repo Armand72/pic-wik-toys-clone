@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { Auth } = require("../auth/Auth");
 require("dotenv").config();
 
 // create json web token
@@ -36,6 +37,7 @@ router.post("/", async (req: any, res: any) => {
     const user = await newUser.save();
 
     const { name, _id } = user;
+
     res.status(200).json({ user: { name, _id } });
   } catch (err) {
     let errors = "";
@@ -106,7 +108,26 @@ router.post("/check", async (req: any, res: any, next: any) => {
       }
     });
   } else {
+    const error = "visitor";
+    res.status(401).send({ error });
     console.log("not registered");
+  }
+});
+
+module.exports = router;
+
+// check current user
+router.delete("/:id", Auth, async (req: any, res: any, next: any) => {
+  try {
+    const user = req.params.id;
+
+    let data = await Users.findById(user);
+
+    await data.remove();
+    res.status(200).send({ data });
+  } catch (err) {
+    const errors = err.message;
+    res.status(400).json({ errors });
   }
 });
 

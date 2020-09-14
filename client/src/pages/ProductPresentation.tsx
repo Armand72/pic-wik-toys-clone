@@ -301,10 +301,12 @@ const ProductPresentation: FunctionComponent = (props: any) => {
                     <div></div>
                   </button>
                 </Link>
-                <button className="button button__secondary button--medium  mt">
-                  Continuer mes achats
-                  <div></div>
-                </button>
+                <Link to={`//5f47cb6a97e330924c19230d`}>
+                  <button className="button button__secondary button__secondary--formPayment button--medium  mt">
+                    Continuer mes achats
+                    <div></div>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

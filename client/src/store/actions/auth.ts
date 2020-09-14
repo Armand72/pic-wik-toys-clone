@@ -4,6 +4,7 @@ import store from "../store";
 import { setPopup } from "./popup";
 import { closeModal } from "./modal";
 import { SET_AUTH, SET_CART } from "./types";
+import { addCartVisitorApp } from "./cart";
 
 export const registrationUser = async (data) => {
   try {
@@ -103,6 +104,7 @@ export const loginUser = async (data) => {
 };
 
 export const checkUser = async () => {
+  console.log("userChecked");
   try {
     const response = await API.post("users/check");
     if (response.status === 200) {
@@ -118,9 +120,22 @@ export const checkUser = async () => {
         type: SET_AUTH,
         payload,
       });
+      const basket = JSON.parse(localStorage.getItem("cart") || "{}");
+      basket.user = _id;
+
+      if (basket?.productList) {
+        store.dispatch({
+          type: SET_CART,
+          payload: { ...basket },
+        });
+
+        await API.put(`baskets/${_id}`, basket);
+        localStorage.setItem("cart", JSON.stringify(basket));
+      }
     }
   } catch (err) {
-    console.log(err.response);
+    const basket = JSON.parse(localStorage.getItem("cart") || "{}");
+    addCartVisitorApp(basket);
     const payload = {
       name: "",
       _id: "",

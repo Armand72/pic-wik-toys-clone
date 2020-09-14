@@ -292,57 +292,60 @@ const MyCart: FunctionComponent = () => {
         <div className="modal">
           <div className="modal__overlay--blue" onClick={modal}></div>
           <div className="modal__container modal__container--account">
-            <div className="modal__container__close" onClick={modal}>
-              x
-            </div>
-            <div className="modal__container__title">
-              <h2>Veuillez remplir les champs.</h2>
-            </div>
-            <div className="text--small mb">
-              <p>
-                (Numéro carte test : 4242 4242 4242 4242 / date: 04/24 / CVC:444
-                )
-              </p>
-            </div>
-            <form
-              onSubmit={handleSubmit}
-              className="modal__container__formPayment"
-            >
-              <div>
-                Numéro de carte
-                <CardNumberElement />
-              </div>
-              <div>
-                Date d'expiration <CardExpiryElement />
-              </div>
-              <div>
-                CVC
-                <CardCvcElement />
-              </div>
-              {receipt ? (
-                <a
-                  className="modal__container__link"
-                  target="_blank"
-                  href={receipt}
-                  rel="noopener noreferrer"
+            {!receipt && (
+              <>
+                <div className="modal__container__close" onClick={modal}>
+                  x
+                </div>
+
+                <div className="modal__container__title">
+                  <h2>Veuillez remplir les champs.</h2>
+                </div>
+                <div className="text--small mb">
+                  <p>
+                    (Numéro carte test :
+                    <span className="text--important">4242 4242 4242 4242</span>{" "}
+                    / date: <span className="text--important">04/24</span> /
+                    CVC:<span className="text--important">444</span> )
+                  </p>
+                </div>
+                <form
+                  onSubmit={handleSubmit}
+                  className="modal__container__formPayment"
                 >
-                  VOTRE REÇU
-                </a>
-              ) : (
-                <button
-                  className={
-                    !stripe
-                      ? "button button__main index button--small button__main--disabled "
-                      : "button button__main index button--small"
-                  }
-                  disabled={!stripe ? true : false}
-                  type="submit"
-                >
-                  Payer
-                  <div></div>
-                </button>
-              )}
-            </form>
+                  <div>
+                    Numéro de carte
+                    <CardNumberElement />
+                  </div>
+                  <div>
+                    Date d'expiration <CardExpiryElement />
+                  </div>
+                  <div>
+                    CVC
+                    <CardCvcElement />
+                  </div>
+                  <button
+                    className={
+                      !stripe
+                        ? "button button__main index button--small button__main--disabled "
+                        : "button button__main index button--small"
+                    }
+                    disabled={!stripe ? true : false}
+                    type="submit"
+                  >
+                    Payer
+                    <div></div>
+                  </button>
+                </form>
+              </>
+            )}
+            {receipt && (
+              <a target="_blank" href={receipt} rel="noopener noreferrer">
+                <div className="modal__container__link">
+                  <p>VOTRE REÇU</p>
+                </div>
+              </a>
+            )}
           </div>
         </div>
       )}
