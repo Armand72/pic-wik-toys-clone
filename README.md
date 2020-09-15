@@ -39,7 +39,7 @@ To run this project, you will need typescript and ts-node to be installed global
 `npm install -g typescript`
 `npm install -g ts-node`
 
-The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>.
+The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>, in the root folder and in the client folder.
 
 <b>Create 2 .env</b>: one in the root folder the other in the client folder.
 
