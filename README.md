@@ -2,7 +2,7 @@
 
 ## 🤖 Welcome to the pic-wik-toys-clone project 😀
 
-Link to the website
+[Link to the website][picwik]
 
 ### Currently researching a job or a company that would hire me for one year for a work-based training. To see my other projects, look at [my portfolio][website] or [my linkedin][linkedin]. 💻 
 
