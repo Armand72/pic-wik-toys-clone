@@ -52,10 +52,10 @@
   &__blue {
     @media (min-width: $screen) {
       position: absolute;
-      background: url(/images/blue.svg) 50% no-repeat;
+      background: url(/images/blue.png) 50% no-repeat;
 
-      right: -27rem;
-      width: 55.5rem;
+      width: 400px;
+      right: 0;
       height: 40rem;
       z-index: -1;
       background-size: contain;
