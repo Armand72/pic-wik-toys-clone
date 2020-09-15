@@ -2,9 +2,9 @@
 
 ## 🤖 Welcome to the pic-wik-toys-clone project 😀
 
-[Link to the website][picwik]
+[Link to the project website][picwik]
 
-[Link to the real pic wik toy website][picwikReal]
+[Link to the real website][picwikReal]
 
 ### Currently researching a job or a company that would hire me for one year for a work-based training. To see my other projects, look at [my portfolio][website] or [my linkedin][linkedin]. 💻 
 
@@ -67,4 +67,5 @@ Use `npm test`to run the test with jest
   [website]: https://armand-meunier.herokuapp.com/
   [cloneurl]: https://www.picwictoys.com/
   [linkedin]: https://www.linkedin.com/in/armand-meunier/
+    [picwik]: https://pic-wik-toys-clone.herokuapp.com/
     [picwikReal]: https://www.picwictoys.com/
