@@ -1,4 +1,4 @@
-
+### Currently researching a job or a company that would hire me for one year for a work-based training. To see my other projects, look at [my portfolio][website] or [my linkedin][linkedin]. 💻 
 
 ## 🤖 Welcome to the pic-wik-toys-clone project 😀
 
@@ -6,7 +6,7 @@
 
 [Link to the real website][picwikReal]
 
-### Currently researching a job or a company that would hire me for one year for a work-based training. To see my other projects, look at [my portfolio][website] or [my linkedin][linkedin]. 💻 
+
 
 <b>Why</b>: I was able to learn new technologies like mongoDB, a payment API (Stripe), typescript and hooks with react. It has required lots of research on the internet in order to comprehend the full extent of each technology. The project is a clone of [the following website][cloneurl]. 
 
