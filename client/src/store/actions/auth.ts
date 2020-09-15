@@ -104,7 +104,6 @@ export const loginUser = async (data) => {
 };
 
 export const checkUser = async () => {
-  console.log("userChecked");
   try {
     const response = await API.post("users/check");
     if (response.status === 200) {
