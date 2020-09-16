@@ -19,7 +19,7 @@
 
 The website has been secured thanks to cookies, dotenv, bcrypt and jsonwebtoken.
 
-### Technologies ⚙️
+### Stack ⚙️
 
 <div style="display:flex;justify-content:center;">
 
@@ -35,7 +35,12 @@ The website has been secured thanks to cookies, dotenv, bcrypt and jsonwebtoken.
 
 ### Install the repository 📩
 
-The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>.
+To run this project, you will need typescript and ts-node to be installed globally:
+`npm install -g typescript`
+`npm install -g ts-node`
+
+The repository is composed of two package.json. You will need to run `npm install` <b>two times</b>, in the root folder and in the client folder.
+
 <b>Create 2 .env</b>: one in the root folder the other in the client folder.
 
 <b>.env in the root folder</b>
@@ -58,7 +63,7 @@ The repository is composed of two package.json. You will need to run `npm instal
 
 Use `npm run dev` in the root folder in order to launch the back and front concurrently.
 
-Use `npm test`to run the test with jest
+Use `npm test`to run the test with jest in the root folder
 
 
 
